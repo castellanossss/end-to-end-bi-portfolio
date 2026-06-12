@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo Castellanos | Analytics Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="img/terminal.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.02) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.01) 0px, transparent 50%);
+            background-attachment: fixed;
+            hyphens: none;
+        }
+        .tech-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .tech-card:hover {
+            border-color: rgba(5, 150, 105, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(5, 150, 105, 0.04);
+            transform: translateY(-2px);
+        }
+        .project-card {
+            background: #ffffff;
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-card:hover {
+            border-color: rgba(5, 150, 105, 0.35);
+            box-shadow: 0 30px 60px -15px rgba(5, 150, 105, 0.05);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <nav class="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-7 h-7 rounded bg-slate-900 flex items-center justify-center text-white font-black text-xs tracking-wider">
+                    LC
+                </div>
+                <span class="text-xs font-black uppercase tracking-widest text-slate-900">Leonardo Castellanos Professional Portfolio</span>
+            </div>
+            <div class="flex items-center space-x-6 text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                <a href="#projects" class="hover:text-slate-900 transition-colors">Projects</a>
+                <a href="#stack" class="hover:text-slate-900 transition-colors">Core Stack</a>
+                <a href="#journey" class="hover:text-slate-900 transition-colors">Journey</a>
+                <a href="#contact" class="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded border border-emerald-200/60 hover:bg-emerald-100 hover:text-emerald-800 transition-all">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+        <div class="max-w-3xl">
+            <span class="inline-flex items-center px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-widest bg-emerald-50 text-emerald-700 rounded border border-emerald-100 mb-4">
+                Systems & Computing Engineering Graduate
+            </span>
+            <h1 class="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight leading-[1.15] mb-6">
+                Turning complex data infrastructure into <span class="text-emerald-600">actionable corporate strategy</span>.
+            </h1>
+            <div class="space-y-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal max-w-2xl text-left">
+                <p>
+                    I am <strong class="text-slate-950 font-extrabold">Leonardo Castellanos</strong>, an <strong class="text-slate-950 font-extrabold">End-to-End Data Analyst</strong> and Systems Engineer. My approach bridges the gap between rigorous data engineering and executive business intelligence, enabling organizations to resolve critical operational blindspots through data-driven decisions.
+                </p>
+                <p>
+                    From architecting robust relational layers across <strong class="text-slate-950 font-extrabold">enterprise SQL databases</strong> to deploying high-fidelity dashboards in <strong class="text-slate-950 font-extrabold">advanced BI platforms</strong>, I manipulate chaotic data environments to extract genuine statistical signals, mitigate financial risks, and optimize core business KPIs.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-6 mt-8 pt-6 border-t border-slate-100 text-xs font-bold text-slate-500">
+                <a href="https://www.linkedin.com/in/leonardo-castellanosp/" target="_blank" class="flex items-center space-x-2 hover:text-emerald-600 transition-colors">
+                    <svg class="w-4 h-4 stroke-[1.75]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:leonardo.p.castellanos@gmail.com" class="flex items-center space-x-2 hover:text-emerald-600 transition-colors">
+                    <svg class="w-4 h-4 fill-none stroke-[1.75]" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span>Email Contact</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="projects" class="scroll-mt-24 max-w-5xl mx-auto px-6 py-12 border-t border-slate-100">
+        <div class="mb-10">
+            <h2 class="text-2xl font-black text-slate-950 tracking-tight">Selected Case Studies</h2>
+            <p class="text-[11px] text-slate-400 font-bold mt-0.5 uppercase tracking-widest">End-to-End Solutions</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <a href="lendiq.html" class="project-card p-5 pb-6 rounded-xl flex flex-col justify-between h-80 group border-l-4 border-l-emerald-600">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-700 rounded border border-emerald-100">
+                            Risk Engineering & BI
+                        </span>
+                    </div>
+                    <h3 class="text-base font-extrabold text-slate-950 group-hover:text-emerald-600 transition-colors">
+                        LendIQ Risk Architecture
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-2.5 font-normal leading-relaxed text-left">
+                        Mitigating a severe <strong class="text-slate-950 font-bold">49.28% loan default crisis</strong> for a rapid-growth FinTech startup. Engineered a robust Medallion architecture inside PostgreSQL to cleanse 50,000 corrupted records and deployed optimized Star Schemas to insulate <strong class="text-slate-950 font-bold">$213.32M in protected assets</strong> via predictive automated scoring workflows.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1 mt-4 pt-3 border-t border-slate-100/60">
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">PostgreSQL</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Power BI</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Python</span>
+                </div>
+            </a>
+
+            <a href="aeroglide.html" class="project-card p-5 pb-6 rounded-xl flex flex-col justify-between h-80 group border-l-4 border-l-emerald-600">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-700 rounded border border-emerald-100">
+                            Supply Chain Analytics
+                        </span>
+                    </div>
+                    <h3 class="text-base font-extrabold text-slate-950 group-hover:text-emerald-600 transition-colors">
+                        AeroGlide Distribution
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-2.5 font-normal leading-relaxed text-left">
+                        Resolving critical operational and financial bottlenecks driven by the <strong class="text-slate-950 font-bold">Bullwhip Effect</strong> across omnichannel networks. Developed automated data generation and specialized ingestion pipelines in Python utilizing Pandas and NumPy within Jupyter environments to optimize high-volume inventory carrying costs and eliminate stockouts.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1 mt-4 pt-3 border-t border-slate-100/60">
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Python</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Pandas</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Power BI</span>
+                </div>
+            </a>
+
+            <a href="keeplo.html" class="project-card p-5 pb-6 rounded-xl flex flex-col justify-between h-80 group border-l-4 border-l-emerald-600">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider bg-emerald-50 text-emerald-700 rounded border border-emerald-100">
+                            Analytics Engineering
+                        </span>
+                    </div>
+                    <h3 class="text-base font-extrabold text-slate-950 group-hover:text-emerald-600 transition-colors">
+                        Keeplo Subscription Churn
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-2.5 font-normal leading-relaxed text-left">
+                        Auditing a B2B SaaS recurrent revenue platform suffering from rapid customer attrition. Built a modern data stack pipeline utilizing <strong class="text-slate-950 font-bold">Polars for ultra-fast data manipulation</strong>, complex SQL querying inside an in-process <strong class="text-slate-950 font-bold">DuckDB database</strong>, and dbt Core transformation layers to execute an advanced RFM matrix displayed in Tableau.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-1 mt-4 pt-3 border-t border-slate-100/60">
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Polars</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">DuckDB</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">dbt Core</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-50 text-slate-600 rounded border border-slate-100">Tableau</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <section id="stack" class="scroll-mt-24 max-w-5xl mx-auto px-6 py-12 border-t border-slate-100">
+        <div class="mb-10">
+            <h2 class="text-2xl font-black text-slate-950 tracking-tight">Core Technical Stack</h2>
+            <p class="text-[11px] text-slate-400 font-bold mt-0.5 uppercase tracking-widest">Architectural Categorization</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+            
+            <div class="tech-card p-5 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-2 text-slate-950">
+                        <svg class="w-4 h-4 text-emerald-600 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h4 class="text-xs font-black uppercase tracking-wider">Programming & Automation</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mt-4">
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Python</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">SQL</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Java</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Bash</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-card p-5 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-2 text-slate-950">
+                        <svg class="w-4 h-4 text-emerald-600 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                        <h4 class="text-xs font-black uppercase tracking-wider">Database Systems & Architecture</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mt-4">
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">PostgreSQL</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Oracle DB</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-card p-5 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-2 text-slate-950">
+                        <svg class="w-4 h-4 text-emerald-600 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.003 9.003 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                        <h4 class="text-xs font-black uppercase tracking-wider">Analytics Engineering & BI</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mt-4">
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Power BI</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Tableau</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">dbt Core</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Jupyter</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-card p-5 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center space-x-2 text-slate-950">
+                        <svg class="w-4 h-4 text-emerald-600 stroke-[2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                        <h4 class="text-xs font-black uppercase tracking-wider">Cloud & Infrastructure</h4>
+                    </div>
+                    <div class="flex flex-wrap gap-1 mt-4">
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">AWS</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Azure</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Docker</span>
+                        <span class="text-xs font-bold px-2 py-1 bg-slate-50 text-slate-700 rounded border border-slate-100/60">Git</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="journey" class="scroll-mt-24 max-w-5xl mx-auto px-6 py-12 border-t border-slate-100 max-w-3xl">
+        <div class="mb-10">
+            <h2 class="text-2xl font-black text-slate-950 tracking-tight">Education & Professional Journey</h2>
+            <p class="text-[11px] text-slate-400 font-bold mt-0.5 uppercase tracking-widest">Validated Experience</p>
+        </div>
+
+        <div class="space-y-10 border-l-2 border-slate-100 pl-6 ml-2">
+            
+            <div class="relative">
+                <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-emerald-600 rounded-full border-4 border-white"></div>
+                <span class="text-[11px] font-black uppercase tracking-wider px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded">Experience</span>
+                <h3 class="text-lg font-extrabold text-slate-950 mt-2">Junior Logistics Analytics Engineer</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Fábrica Los Pinos &bull; Duration: 6 Months</p>
+                <p class="text-xs sm:text-sm text-slate-500 mt-2 font-normal leading-relaxed text-left">
+                    Executed end-to-end data pipelines within the supply chain and logistics division. Cleaned, structured, and modeled operational metrics from legacy databases to <strong class="text-slate-950 font-extrabold">optimize distribution workflows</strong>, improve resource allocation, and enhance data scannability for department leaders.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-emerald-600 rounded-full border-4 border-white"></div>
+                <span class="text-[11px] font-black uppercase tracking-wider px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded">Experience</span>
+                <h3 class="text-lg font-extrabold text-slate-950 mt-2">Business Intelligence & Analytics Intern</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Contraloría General de Boyacá &bull; Duration: 6 Months</p>
+                <p class="text-xs sm:text-sm text-slate-500 mt-2 font-normal leading-relaxed text-left">
+                    Designed and deployed an <strong class="text-slate-950 font-extrabold">end-to-end BI solution for institutional surveillance</strong>, specifically focused on the monitoring, tracking, and control of public PQRSD (Complaints and Claims). Transformed chaotic citizen transaction logs into highly governed relational layers and interactive dashboards to drive evidence-based oversight.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-emerald-700 rounded-full border-4 border-white"></div>
+                <span class="text-[11px] font-black uppercase tracking-wider px-2 py-0.5 bg-slate-900 text-white rounded">Education</span>
+                <h3 class="text-lg font-extrabold text-slate-950 mt-2">B.S. in Systems & Computing Engineering</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Universidad Pedagógica y Tecnológica de Colombia (UPTC) &bull; 2021 &ndash; 2026</p>
+                <p class="text-xs sm:text-sm text-slate-500 mt-2 font-normal leading-relaxed text-left">
+                    Focused on enterprise software architecture, advanced database design, algorithmic optimization, and <strong class="text-slate-950 font-extrabold">end-to-end analytical data manipulation</strong> (including data cleansing, robust relational modeling, processing pipelines, and deployment of indicators).
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-slate-900 rounded-full border-4 border-white"></div>
+                <span class="text-[11px] font-black uppercase tracking-wider px-2 py-0.5 bg-slate-100 text-slate-700 border border-slate-200 rounded">Certifications</span>
+                <h3 class="text-base font-extrabold text-slate-950 mt-2">IBM Data Analyst Professional Certificate</h3>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Coursera / IBM Credentials &bull; <a href="https://www.credly.com/badges/5435e0a8-21dd-4eb4-b95a-610b1ad8c2e8/public_url" target="_blank" class="text-emerald-600 hover:underline font-bold">Verify on Credly</a></p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="scroll-mt-24 max-w-5xl mx-auto px-6 py-12 border-t border-slate-100 max-w-3xl">
+        <div class="mb-6">
+            <h2 class="text-2xl font-black text-slate-950 tracking-tight">Let's Connect</h2>
+            <p class="text-[11px] text-slate-400 font-bold mt-0.5 uppercase tracking-widest">Professional Availability</p>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500 font-normal leading-relaxed text-left mb-6 max-w-xl">
+            I am actively seeking professional opportunities as an <strong class="text-slate-950 font-bold">Analytics Engineer, Data Analyst, or Risk Analyst</strong>. If your team requires a professional who combines structured computing engineering fundamentals with end-to-end data pipelines and high-level business intelligence, feel free to reach out through any of the verified system channels below.
+        </p>
+        <div class="inline-flex flex-col space-y-3 text-xs font-bold text-slate-600 bg-slate-50 p-4 rounded-xl border border-slate-100 w-full sm:w-auto">
+            <div class="flex items-center space-x-3"><span class="text-emerald-600">LinkedIn:</span><a href="https://www.linkedin.com/in/leonardo-castellanosp/" target="_blank" class="text-slate-950 hover:text-emerald-600 transition-colors underline">Leonardo Castellanos LinkedIn Profile</a></div>
+            <div class="flex items-center space-x-3"><span class="text-emerald-600">Direct Email:</span><a href="mailto:leonardo.p.castellanos@gmail.com" class="text-slate-950 hover:text-emerald-600 transition-colors underline">leonardo.p.castellanos@gmail.com</a></div>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-100 bg-slate-50 text-slate-400 text-[11px] py-8">
+        <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+            <p>&copy; 2026 Leonardo Castellanos. Engineered for architectural precision and strategic execution.</p>
+            <div class="flex space-x-4 font-bold uppercase tracking-wider text-slate-400">
+                <span>Systems Engineering</span>
+                <span>&bull;</span>
+                <span>Data Analytics</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keeplo SaaS Retention Audit | Leonardo Castellanos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="img/terminal.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(251, 133, 0, 0.015) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(251, 133, 0, 0.015) 0px, transparent 50%);
+            background-attachment: fixed;
+            hyphens: none;
+        }
+        .sidebar-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar-link:hover {
+            color: #fb8500;
+            padding-left: 4px;
+        }
+        .figure-container {
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+        
+        /* Default mobile/tablet fluid layout with inner touch scrollbar */
+        .tableau-frame-container {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .tableau-scaled-wrapper {
+            min-width: 1366px;
+            height: 795px;
+        }
+        
+        /* Advanced Geometric Scale Matrix implementation for Desktop Viewports */
+        @media (min-width: 1200px) {
+            .tableau-frame-container {
+                width: 1104px; /* Matches exact inner bounds of max-w-6xl layout minus padding */
+                height: 643px; /* Strictly bounded parent dimension (795px * 0.8082) preventing phantom white margins */
+                overflow: hidden;
+                position: relative;
+            }
+            .tableau-scaled-wrapper {
+                width: 1366px;
+                height: 795px;
+                transform: scale(0.8082);
+                transform-origin: top left;
+                position: absolute;
+                top: 0;
+                left: 0;
+                min-width: transparent;
+            }
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-orange-100 selection:text-orange-900">
+
+    <nav class="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-xs font-bold text-slate-500 hover:text-[#fb8500] transition-colors flex items-center space-x-1.5">
+                    <svg class="w-4 h-4 fill-none stroke-[2]" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <span class="text-slate-200">|</span>
+                <span class="text-xs font-black uppercase tracking-widest text-slate-900">Keeplo Executive Brief</span>
+            </div>
+            <div>
+                <a href="pdf/keeplo_retention_report.pdf" target="_blank" class="text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 bg-slate-900 text-white rounded hover:bg-[#fb8500] transition-colors">
+                    View Full PDF Report
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-6 grid grid-cols-1 lg:grid-cols-4 gap-12">
+        
+        <aside class="hidden lg:block lg:col-span-1">
+            <div class="sticky top-28 space-y-5 border-l border-slate-100 pl-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <p class="text-[10px] font-black tracking-widest text-slate-900 uppercase mb-4">Report Index</p>
+                <a href="#foundations" class="sidebar-link block">1. Executive Summary</a>
+                <a href="#context" class="sidebar-link block">2. Strategic Context</a>
+                <a href="#pipeline" class="sidebar-link block">3. Data Architecture</a>
+                <a href="#analytics" class="sidebar-link block">4. Visual Implementation</a>
+                <a href="#diagnostics" class="sidebar-link block">5. Analysis of Findings</a>
+                <a href="#protocols" class="sidebar-link block">6. Action Plan</a>
+                <a href="#exploration" class="sidebar-link block text-[#fb8500] border-t border-slate-100 pt-3 mt-2 flex items-center space-x-1 font-black">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    <span>Live Dashboard Exploration</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="col-span-1 lg:col-span-3 space-y-12 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            
+            <header class="border-b border-slate-100 pb-6">
+                <span class="inline-flex items-center px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-widest bg-orange-50 text-[#fb8500] rounded border border-orange-100 mb-3">
+                    SaaS Growth Analytics & Data Engineering
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-[1.2]">
+                    Keeplo: B2B SaaS Retention Framework & Modern Data Stack Pipeline
+                </h1>
+                <p class="text-slate-500 mt-3 font-normal">
+                    Neutralizing a 27.5% macro attrition rate and optimizing platform onboarding lifecycles using DuckDB, Polars, dbt Core, and Level of Detail (LOD) calculations in Tableau.
+                </p>
+                
+                <div class="mt-5 p-4 bg-orange-50/30 rounded-xl border border-orange-100/50 flex items-start space-x-3 text-xs text-slate-600">
+                    <div class="w-5 min-w-5 h-5 flex-shrink-0 text-[#fb8500] mt-0.5 flex items-center justify-center">
+                        <svg class="w-5 h-5 fill-none stroke-[2.2]" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <p><strong class="text-slate-950 font-bold">System Architecture Note:</strong> The fully operational Tableau production analytics sandbox environment is consolidated within the <a href="#exploration" class="text-[#fb8500] font-bold underline hover:text-orange-700">Live Dashboard Exploration</a> area at the base of this interface layer for multi-dimensional transaction auditing.</p>
+                </div>
+            </header>
+
+            <section class="border-b border-slate-100 pb-5 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Monthly Churn Rate</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5"><span class="text-[#fb8500]">27.5%</span></h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Macro Customer Attrition Level</p>
+                </div>
+                <div class="sm:border-l sm:border-slate-100 sm:pl-6">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Monthly Recurring Revenue</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5">$95,285</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Sustained by 1,789 Active Users</p>
+                </div>
+                <div class="sm:border-l sm:border-slate-100 sm:pl-6">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">At-Risk Subscriber Pool</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5"><span class="text-[#fb8500]">40.83%</span></h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Symmetric User Lifecycle Polarization</p>
+                </div>
+            </section>
+
+            <article id="foundations" class="scroll-mt-24 space-y-4">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Phase 01: Subscription Diagnostics</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">1. Executive Summary & Core Diagnostics</h2>
+                </div>
+                <p>
+                    This strategic briefing provides a comprehensive evaluation of the subscription retention architecture developed for <strong class="text-[#fb8500] font-bold">Keeplo</strong>, establishing a data-verified baseline to guide executive decision-making. By auditing the transactional ledger through a rigorous analytics pipeline, this report translates raw operational database logs into high-level business intelligence to address critical customer attrition points.
+                </p>
+                <p>
+                    The analytical framework rests on the core institutional mandate that protecting recurring revenue from the existing subscriber base is fundamentally more profitable than expanding front-end marketing acquisition funnels.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">1.1 Core Financial and Operational Diagnostics</h3>
+                    <p>
+                        The baseline corporate metrics for Keeplo indicate a stabilized Monthly Recurring Revenue of <strong class="text-slate-950 font-black">$95,285</strong> sustained by an active subscriber base of <strong class="text-slate-950 font-black">1,789 users</strong>. While these indicators demonstrate solid market traction, corporate profitability is heavily constrained by a monthly <strong class="text-[#fb8500] font-bold">Churn Rate</strong> of <strong class="text-[#fb8500] font-bold">27.5%</strong>, which accounts for a net loss of <strong class="text-slate-950 font-black">568 customers</strong> within the current reporting cycle. This severe volume leak indicates that while customer acquisition pipelines are successfully converting initial demand, the platform faces an immediate utility bottleneck that compounds <strong class="text-[#fb8500] font-bold">Customer Lifetime Value</strong> degradation.
+                    </p>
+                    <p>
+                        The underlying revenue ledger proves that capital generation remains heavily dependent on the premium subscription tier which accounts for <strong class="text-slate-950 font-black">72% of total contract volume</strong>, leaving the remaining 28% distributed across basic contracts. Consequently, stabilizing retention within the high-value premium segment represents the single most critical operational priority to mitigate compounding monthly revenue contraction.
+                    </p>
+                </div>
+
+                <div class="bg-orange-50/40 border border-orange-100/60 p-5 rounded-xl space-y-2 my-4">
+                    <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-black bg-[#fb8500] text-white rounded uppercase tracking-wider">The Leaky Bucket Financial Paradox</span>
+                    <h4 class="font-black text-slate-950">Dissecting Cross-Departmental Operational Blind Spots</h4>
+                    <p>During the 2025-2026 expansion campaign, aggressive front-end acquisition masks an unsustainable operational pathology. While massive user registration spikes break historical records, they enter a pipeline where onboarding mechanisms fail to establish product adoption. Executive leadership remains divided on the root causes: the Product team suspects low-quality promotional leads, while Marketing asserts usability deficiencies, and Support experiences a breakdown under surging ticket logs. This framework removes subjective opinions, diagnosing systemic attrition through empirical data lineage.</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">1.2 Systemic Revenue Leakage Analysis</h3>
+                    <p>
+                        An evaluation of behavioral customer archetypes exposes a critical risk distribution within the user lifecycle matrix. The <strong class="text-[#fb8500] font-bold">Recency, Frequency, and Monetary (RFM)</strong> calculation model isolates a matching mathematical spread where <strong class="text-slate-950 font-black">40.83%</strong> of total unique accounts are classified as New or Recent Active users, while an identical <strong class="text-[#fb8500] font-bold">40.83%</strong> have already deteriorated into the At Risk category. This equilibrium exposes a severe structural breakdown immediately following the initial conversion funnel, where onboarding mechanisms fail to transition new signups into sustained platform adoption.
+                    </p>
+                    <p>
+                        This operational deficit is validated by the transactional logs, which identify voluntary product abandonment due to a lack of core feature usage as the primary threat to revenue stability. This specific churn category accounts for <strong class="text-slate-950 font-black">2,948 customer cancellations</strong>, completely eclipsing price-sensitive attrition which accounts for 965 cancellations, proving that customer loss is driven by onboarding failure rather than market pricing pressures.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">1.3 Data Engineering Integrity and Mitigation Blueprint</h3>
+                    <p>
+                        To guarantee absolute operational clarity for leadership, the insights presented in this report originate from a fully audited data infrastructure layer designed to eliminate data pipeline noise and transactional anomalies. The production <strong class="text-slate-950 font-black">dbt Core</strong> pipeline successfully countered critical upstream quality deficits, executing the deletion of duplicate account records, the removal of negative accounting errors, and the normalization of fragmented contract fields that previously obscured true revenue distribution.
+                    </p>
+                    <p>
+                        With data integrity established, reversing the 27.5% churn threshold requires an immediate two-pronged operational strategy. The product team must deploy automated feature activation protocols targeted at the 40.83% At Risk user pool to stimulate engagement, while the engineering team must integrate automated dunning management into the billing gateway to neutralize credit card expirations and bank rejections, which currently account for a combined total of <strong class="text-slate-950 font-black">866 preventable customer cancellations</strong>.
+                    </p>
+                </div>
+            </article>
+
+            <article id="context" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Phase 02: Business Mandate</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">2. Introduction & Solution Objectives</h2>
+                </div>
+                <p>
+                    This chapter establishes the foundational groundwork for the Keeplo business intelligence initiative, outlining the strategic necessity and structural goals that driven the implementation of this analytics framework. In the rapidly evolving <strong class="text-[#fb8500] font-bold">SaaS</strong> landscape, corporate sustainability depends heavily on maximizing customer lifetime value and minimizing churn dynamics. This documentation sets the parameters for an intervention designed to move the company away from anecdotal reporting toward a highly systematic, data-driven governance model. By aligning data infrastructure with high-level commercial priorities, this project provides executives with the visibility required to protect recurring revenue streams and optimize long-term operational stability.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.1 Strategic Context and Business Mandate</h3>
+                    <p>
+                        The foundational doctrine anchoring this project is summarized by the corporate directive to prioritize customer retention over aggressive front-end acquisition funnels. While traditional growth strategies place an asymmetric focus on customer acquisition metrics, the financial realities of a subscription model prove that scaling relies on minimizing user attrition. High customer acquisition costs require multiple months of uninterrupted subscription tenure just to achieve capital break-even on each account. Consequently, a monthly churn rate of 27.5% represents an immediate erosion of marketing efficiency and long-term profitability.
+                    </p>
+                    <p>
+                        This analysis moves beyond aggregate figures to unpack the exact friction points within the user lifecycle, empowering leadership to transform raw behavioral signals into proactive preservation campaigns.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.2 Analytical Scope and Solution Objectives</h3>
+                    <p>
+                        The core technical and strategic objective of this business intelligence deployment is to establish an uncompromised, real-time diagnostic layer over the entire Keeplo user base. This solution maps customer journeys from initial signup through historical milestone cycles, translating disparate transactional logs and session event tables into an integrated behavioral matrix. Operatively, the system isolates high-risk cohorts before complete attrition occurs, allowing retention teams to deploy targeted interventions based on specific usage deficits.
+                    </p>
+                    <p>
+                        By institutionalizing automated metrics like Recency, Frequency, and Monetary scoring, the platform removes subjectivity from customer health evaluations. Ultimately, the analytical architecture serves as a strategic decision engine, providing executive leadership with the precise visibility needed to execute data-driven risk mitigation, optimize product onboarding protocols, and secure the overarching subscription landscape.
+                    </p>
+                </div>
+            </article>
+
+            <article id="pipeline" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Phase 03: Analytical Transformation</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">3. Data Architecture & Information Engineering</h2>
+                </div>
+                <p>
+                    Raw transactional records and behavioral user logs are inherently chaotic, containing structural anomalies and reporting noise that can distort high-level executive metrics if left unremediated. To prevent strategic misalignment, a robust data pipeline was constructed using <strong class="text-slate-950 font-black">dbt Core</strong>, <strong class="text-slate-950 font-black">Polars</strong>, and <strong class="text-slate-950 font-black">DuckDB</strong> to ingest, clean, and model data from core operational databases into highly optimized analytics assets.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.1 Data Lineage and Structural Source Mapping</h3>
+                    <p>
+                        The data architecture relies on three primary pipelines capturing customer relationship logs: account demographics (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">stg_customers</code>), ledger transactions (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">stg_transactions</code>), and platform activity systems (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">stg_user_activity</code>). Through the analytics engineering layer, these layers compile into an optimized star schema framework designed to surface behavioral metrics.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.2 Upstream Cleanup and Deduplication Pipeline</h3>
+                    <p>
+                        To ensure unique primary key constraints, the staging script deploys an elite analytics architecture, utilizing an elastically chained <code class="text-xs font-mono bg-slate-100 px-0.5 rounded text-slate-800">TRY_CAST</code> structure to handle date anomalies and a high-performance <strong class="text-slate-950 font-black">QUALIFY</strong> layer to strip out duplicate records in a single execution sweep:
+                    </p>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre>-- stg_customers.sql Ingestion Architecture Framework
+WITH source_data AS (
+    SELECT * FROM {{ ref('raw_customers') }}
+),
+
+cleaned_customers AS (
+    SELECT
+        customer_id,
+        
+        -- The definitive elastic parser shield: TRY_CAST handles multi-format fields
+        COALESCE(
+            TRY_CAST(signup_date AS DATE),
+            TRY_CAST(
+                SPLIT_PART(signup_date, '/', 3) || '-' || 
+                LPAD(SPLIT_PART(signup_date, '/', 1), 2, '0') || '-' || 
+                LPAD(SPLIT_PART(signup_date, '/', 2), 2, '0') 
+                AS DATE
+            ),
+            TRY_CAST(REPLACE(signup_date, '.', '-') AS DATE)
+        ) AS signup_date,
+        
+        COALESCE(acquisition_channel, 'Unknown') AS acquisition_channel,
+        UPPER(SUBSTRING(plan_type, 1, 1)) || LOWER(SUBSTRING(plan_type, 2)) AS plan_type,
+        discount_code
+    FROM source_data
+)
+
+SELECT * FROM cleaned_customers
+QUALIFY ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY signup_date) = 1</pre>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.3 Algorithmic RFM Behavioral Mart Modeling</h3>
+                    <p>
+                        In the dimensional modeling tier (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">fct_customer_rfm.sql</code>), raw continuous log history is compiled into statistical score windows via the <strong class="text-slate-950 font-black">NTILE(4)</strong> window function, grouping users into operational blocks based on the mathematical frequency of their platform adoption:
+                    </p>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre>-- fct_customer_rfm.sql Dimensional Score Generation
+WITH customers AS (
+    SELECT customer_id, signup_date, plan_type, acquisition_channel, discount_code
+    FROM {{ ref('stg_customers') }}
+),
+activity AS (
+    SELECT customer_id, COUNT(log_id) AS total_sessions, MAX(activity_date) AS last_activity_date
+    FROM {{ ref('stg_user_activity') }}
+    GROUP BY customer_id
+),
+transactions AS (
+    SELECT customer_id, SUM(amount_paid) AS total_monetary
+    FROM {{ ref('stg_transactions') }}
+    GROUP BY customer_id
+),
+user_metrics AS (
+    SELECT
+        c.customer_id, c.signup_date, c.plan_type, c.acquisition_channel, c.discount_code,
+        DATE_DIFF('day', COALESCE(a.last_activity_date, c.signup_date), (SELECT MAX(signup_date) FROM customers)) AS recency_days,
+        COALESCE(a.total_sessions, 0) AS frequency_count,
+        COALESCE(t.total_monetary, 0.0) AS monetary_value
+    FROM customers c
+    LEFT JOIN activity a ON c.customer_id = a.customer_id
+    LEFT JOIN transactions t ON c.customer_id = t.customer_id
+),
+rfm_scores AS (
+    SELECT
+        *,
+        NTILE(4) OVER (ORDER BY recency_days DESC) AS r_score,
+        NTILE(4) OVER (ORDER BY frequency_count ASC) AS f_score,
+        NTILE(4) OVER (ORDER BY monetary_value ASC) AS m_score
+    FROM user_metrics
+)
+SELECT 
+    customer_id, signup_date, plan_type, acquisition_channel, discount_code,
+    recency_days, frequency_count, monetary_value, r_score, f_score, m_score,
+    CASE 
+        WHEN r_score = 4 AND f_score = 4 THEN 'Champions (VIP)'
+        WHEN r_score >= 3 AND f_score >= 3 THEN 'Loyal Customers'
+        WHEN r_score >= 3 AND f_score <= 2 THEN 'New / Recent Active'
+        WHEN r_score <= 2 AND f_score >= 3 THEN 'At Risk / Can''t Lose Them'
+        ELSE 'Lost / Hibernating'
+    END AS customer_segment
+FROM rfm_scores</pre>
+                    </div>
+                </div>
+
+                <div class="bg-orange-50/40 border border-orange-100/60 p-5 rounded-xl space-y-2 my-4">
+                    <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-black bg-[#fb8500] text-white rounded uppercase tracking-wider">dbt Pipeline Quality Constraints</span>
+                    <h4 class="font-black text-slate-950">Remediating Structural Anomalies & Accounting Errors</h4>
+                    <p>Initial downstream database audits exposed systematic data corruption embedded within the source logs. The staging pipelines deployed rigid relational filtering to neutralize these quality deficits:</p>
+                    <ul class="space-y-1 list-disc pl-5 text-xs sm:text-sm">
+                        <li><strong class="text-slate-950 font-bold">Ledger Filtering:</strong> Explicit eviction of negative accounting artifacts via <code class="text-xs font-mono bg-slate-100 px-0.5 rounded text-slate-800">WHERE amount_paid >= 0</code>, removing severe MRR miscalculations.</li>
+                        <li><strong class="text-slate-950 font-bold">Outlier Suppression:</strong> Execution of a constraint lock in the user log mapping layer to cast out corrupt metadata records showing absolute session lengths of 9,999 minutes.</li>
+                        <li><strong class="text-slate-950 font-bold">Casing Normalization:</strong> Vectorized uppercase conversion on plan type attributes, collapsing fragmented textual variants into single clean dimensional elements.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article id="analytics" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Phase 04: Visual Engineering</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">4. Methodology & Technical Implementation in Tableau</h2>
+                </div>
+                <p>
+                    This chapter outlines the methodological framework and analytical configurations executed within Tableau to transform the cleaned data infrastructure into an interactive corporate intelligence engine. Developing a corporate-grade dashboard requires moving beyond default software configurations to engineer customized data synchronization and advanced calculated dimensions.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.1 Global Filter Synchronization and Interactive Architecture</h3>
+                    <p>
+                        The interactive architecture of the dashboard is designed to provide executive stakeholders with an intuitive drill-down experience without compromising visual alignment or data consistency. In a multi-source data environment, default analytical filters operate in isolation, which can lead to fragmented views and conflicting metrics across different charts. To eliminate this operational risk, the dashboard utilizes customized global scoping mechanics, ensuring that primary filters such as Subscription Month, Customer Segment, and Plan Type are structurally tied across independent data repositories.
+                    </p>
+                    <p>
+                        This synchronization guarantees that when a director isolates a specific customer segment, the entire analytical canvas, including historical Monthly Recurring Revenue trends, core key performance indicators, and plan compositions, recalculates instantly. Furthermore, by locking all elements into absolute floating container coordinates with zero padding, the interface maintains its premium aesthetic integrity during high-volume query execution.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.2 Advanced Analytical Engineering via Level of Detail Expressions</h3>
+                    <p>
+                        To capture the true operational reality of the customer lifecycle, the analytics layer integrates advanced Level of Detail expressions utilizing the <strong class="text-[#fb8500] font-bold">FIXED</strong> syntax. Standard reporting tools calculate metrics based purely on what is visually displayed on the chart grid, which prevents the simultaneous evaluation of individual customer records against macro corporate baselines. The integration of advanced calculations overcomes this limitation by anchoring specific metrics directly to the unique customer identifier, completely independent of the visualization shelf dimensions.
+                    </p>
+                    <p>
+                        This approach allowed for the successful deployment of the Recency, Frequency, and Monetary matrix, dividing users into precise behavioral blocks based on their true historical activity. Additionally, this methodology enabled the engineering of a dual-axis hybrid trend component, fusing high-density line graphics with translucent area shading to deliver premium interface aesthetics while accurately reflecting historical capital momentum.
+                    </p>
+                </div>
+            </article>
+
+            <article id="diagnostics" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Phase 05: Analytical Diagnostics</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">5. Analysis of Findings & Analytical Diagnostics</h2>
+                </div>
+                <p>
+                    This chapter delivers a rigorous empirical diagnostic of the commercial performance data captured across the Keeplo operating environment. Moving beyond superficial metrics, this evaluation cross-references macroeconomic revenue timelines with granular user behavioral distributions to expose the root causes of subscriber attrition.
+                </p>
+
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/keeplo_dashboard.png" alt="Keeplo Production Enterprise Attrition Control Interface View" class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure 1.1: Production Control Layer / Keeplo Executive Attrition & Retention Dashboard</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">5.1 Historical Revenue Momentum and Timeline Trends</h3>
+                    <p>
+                        A chronological evaluation of the Monthly Recurring Revenue ledger from January 2025 through May 2026 reveals a distinct trajectory characterized by a prolonged accumulation phase followed by an acute contraction corridor. The platform experienced sustained upward momentum throughout the first three quarters of 2025, driven by successful customer acquisition funnels and compounding contract expansions that pushed revenue to historical peaks. However, this growth phase was abruptly interrupted by a sharp contractive correction in early 2026, exposed by a severe drop in monthly billings before stabilizing at the current baseline of <strong class="text-slate-950 font-black">$95,285</strong> sustained by <strong class="text-slate-950 font-bold">1,789 active users</strong>.
+                    </p>
+                    <p>
+                        This stabilization valley indicates that the business has reached a critical structural equilibrium where front-end acquisition volumes are merely replacing churned capital rather than expanding the net revenue footprint, underscoring the urgent necessity of stabilizing the existing customer foundation.
+                    </p>
+                </div>
+
+                <div class="bg-orange-50/40 border border-orange-100/70 p-5 rounded-xl space-y-2 my-4">
+                    <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-black bg-[#fb8500] text-white rounded uppercase tracking-wider">Lifecycle Distribution Paradox</span>
+                    <h4 class="font-black text-slate-950">Symmetric Portfolio Polarization & Attrition Exposure</h4>
+                    <p>The application of the RFM matrix exposes a highly polarized customer engagement topology across the active subscriber base. The analytics layer isolates a symmetric distribution where exactly <span class="text-[#fb8500] font-black">40.83%</span> of total accounts reside in the New or Recent Active segment, while an identical <span class="text-[#fb8500] font-black">40.83%</span> are locked within the At Risk category. This mathematical spread points to a systemic lifecycle friction point, proving that customers experience a massive drop in platform interaction immediately after completing their onboarding cycle, failing to transition into high engagement frequencies and remaining highly susceptible to imminent cancellation.</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">5.2 Granular Churn Triggers and Contract Portfolio Vulnerabilities</h3>
+                    <p>
+                        A deep dive into explicit cancellation indicators confirms that product utility deficits represent a far greater threat to capital retention than competitive pricing pressures. The transactional ledger isolates voluntary churn driven by a lack of platform usage as the single largest driver of revenue loss, accounting for <strong class="text-slate-950 font-bold">2,948 absolute customer cancellations</strong>, whereas price sensitivity triggered only 965 cancellations.
+                    </p>
+                    <ul class="space-y-2 list-none pl-0">
+                        <li class="border-l-2 border-slate-200 pl-3"><strong class="text-slate-950 font-bold block text-sm">72% Premium Vulnerability:</strong> Corporate financial stability is disproportionately reliant on the premium tier which generates 72% of total contract value, meaning voluntary attrition within these high-value tiers exponentially accelerates revenue degradation.</li>
+                        <li class="border-l-2 border-slate-200 pl-3"><strong class="text-slate-950 font-bold block text-sm">Gateway Payment Friction:</strong> The revenue degradation is heavily aggravated by transactional friction within the payment processing gateway, where preventable involuntary triggers including credit card expirations and bank rejections account for <strong class="text-[#fb8500] font-bold">866 customer losses</strong>.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article id="protocols" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Phase 06: Prescriptive Roadmap</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">6. Strategic Recommendations & Project Conclusions</h2>
+                </div>
+                <p>
+                    To effectively reverse the current churn trajectory, management must deploy targeted interventions that directly address the specific failure modes exposed within the customer behavior ledger, converting data into prescriptive corporate execution.
+                </p>
+
+                <div class="space-y-4 pt-2">
+                    <div class="space-y-1">
+                        <h4 class="font-black text-slate-950 text-sm sm:text-base">6.1 Mitigation of Voluntary Attrition via Targeted Feature Engagement</h4>
+                        <p>Addressing the primary driver of subscription loss requires an immediate transformation of the post-conversion user journey, specifically targeting the <strong class="text-slate-950 font-bold">2,948 cancellations</strong> caused by a lack of platform utility. The product team should implement real-time monitoring triggers that detect a deceleration in core feature access within the first thirty days of subscription tenure. Upon detection of low usage anomalies, automated lifecycle marketing workflows must deliver personalized, context-specific feature discovery guides to demonstrate core value and accelerate product adoption.</p>
+                    </div>
+
+                    <div class="space-y-1">
+                        <h4 class="font-black text-slate-950 text-sm sm:text-base">6.2 Infrastructural Gateway Optimization for Involuntary Churn Remediation</h4>
+                        <p>To neutralize the <strong class="text-slate-950 font-bold">866 customer losses</strong> triggered by card failures, the engineering division must integrate an automated dunning management framework into the primary billing gateway, substituting blunt collection attempts with intelligent retry logic that schedules transaction retries based on optimal bank authorization windows. Furthermore, the implementation of an automated account updater service will securely synchronize expired card credentials with major financial institutions before a payment rejection occurs.</p>
+                    </div>
+
+                    <div class="space-y-1">
+                        <h4 class="font-black text-slate-950 text-sm sm:text-base">6.3 Future Work and Scalability Horizons</h4>
+                        <p>The unified dashboard addresses the core diagnostic deficit directly by providing a verified baseline of $95,285 in MRR. Evolving into subsequent operational cycles, the next technical phase will focus on migrating the production data pipeline into a fully automated cloud architecture, eliminating manual extraction steps and enabling real-time data ingestion. Furthermore, engineering efforts should prioritize the integration of predictive machine learning algorithms directly into the data modeling layer to calculate individual customer churn probabilities before users enter the At Risk classification.</p>
+                    </div>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <section id="exploration" class="scroll-mt-24 max-w-6xl mx-auto px-6 pb-12 space-y-4 border-t border-slate-100 pt-10">
+        <div>
+            <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-orange-50 text-[#fb8500] rounded border border-orange-100 uppercase tracking-wider mb-2">Production Sandbox System</span>
+            <h2 class="text-xl font-black text-slate-950 tracking-tight">Live Dashboard Exploration</h2>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            Audit customer platform interactions, analyze behavioral cohorts, and manipulate dynamic segmentation filters in real-time utilizing the official enterprise control instance extended to its native fixed resolution bounds:
+        </p>
+
+        <div class="figure-container rounded-xl overflow-hidden border border-slate-100 bg-white mt-4 p-0 shadow-lg w-full tableau-frame-container">
+            <div class="bg-slate-50 tableau-scaled-wrapper">
+                
+                <div class='tableauPlaceholder' id='viz1781124465920' style='position: relative; width: 1366px; height: 795px;'>
+                    <noscript>
+                        <a href='#'>
+                            <img alt='Keeplo' src='https://public.tableau.com/static/images/Da/Dashboard_Keeplo/Keeplo/1_rss.png' style='border: none' />
+                        </a>
+                    </noscript>
+                    <object class='tableauViz' style='display:none; width: 1366px; height: 795px;'>
+                        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                        <param name='embed_code_version' value='3' /> 
+                        <param name='site_root' value='' />
+                        <param name='name' value='Dashboard_Keeplo/Keeplo' />
+                        <param name='tabs' value='no' />
+                        <param name='toolbar' value='yes' />
+                        <param name='static_image' value='https://public.tableau.com/static/images/Da/Dashboard_Keeplo/Keeplo/1.png' /> 
+                        <param name='animate_transition' value='yes' />
+                        <param name='display_static_image' value='yes' />
+                        <param name='display_spinner' value='yes' />
+                        <param name='display_overlay' value='yes' />
+                        <param name='display_count' value='yes' />
+                        <param name='language' value='es-ES' />
+                    </object>
+                </div>
+                
+                <script type='text/javascript'>
+                    var divElement = document.getElementById('viz1781124465920');
+                    var vizElement = divElement.getElementsByTagName('object')[0];
+                    vizElement.style.width='1366px';
+                    vizElement.style.height='795px';
+                    var scriptElement = document.createElement('script');
+                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                </script>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-100 bg-slate-50 text-slate-400 text-[11px] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+            <p>&copy; 2026 Leonardo Castellanos. Customer Growth Case Study &bull; Technical Architecture Documentation.</p>
+            <p class="font-bold uppercase tracking-widest text-[#fb8500] text-[10px]">dbt Core &amp; Tableau Analytics Framework</p>
+        </div>
+    </footer>
+
+</body>
+</html>

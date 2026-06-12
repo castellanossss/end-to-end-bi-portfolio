@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LendIQ Case Study | Leonardo Castellanos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="img/terminal.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(5, 150, 105, 0.01) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.01) 0px, transparent 50%);
+            background-attachment: fixed;
+            hyphens: none;
+        }
+
+        .sidebar-link {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .sidebar-link:hover {
+            color: #059669;
+            padding-left: 4px;
+        }
+
+        .figure-container {
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+
+        .tab-btn.active {
+            background-color: #059669;
+            color: #ffffff;
+            border-color: #059669;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800 antialiased selection:bg-emerald-100 selection:text-emerald-900">
+
+    <!-- Header Navigation Bar -->
+    <nav class="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html"
+                    class="text-xs font-bold text-slate-500 hover:text-emerald-600 transition-colors flex items-center space-x-1.5">
+                    <svg class="w-4 h-4 fill-none stroke-[2]" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <span class="text-slate-200">|</span>
+                <span class="text-xs font-black uppercase tracking-widest text-slate-900">LendIQ Executive Brief</span>
+            </div>
+            <div>
+                <a href="pdf/lendiq_executive_report.pdf" target="_blank"
+                    class="text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 bg-slate-900 text-white rounded hover:bg-emerald-600 transition-colors">
+                    View Full PDF Report
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Layout Grid Container -->
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-6 grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+        <!-- PERSISTENT SIDEBAR INDEX NAVIGATION (Desktop Only) -->
+        <aside class="hidden lg:block lg:col-span-1">
+            <div
+                class="sticky top-28 space-y-5 border-l border-slate-100 pl-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <p class="text-[10px] font-black tracking-widest text-slate-900 uppercase mb-4">Report Index</p>
+                <a href="#foundations" class="sidebar-link block">1. Strategic Foundations</a>
+                <a href="#medallion" class="sidebar-link block">2. Medallion Architecture</a>
+                <a href="#performance" class="sidebar-link block">3. Portfolio Performance</a>
+                <a href="#optimization" class="sidebar-link block">4. Scoring Optimization</a>
+                <a href="#recommendations" class="sidebar-link block">5. Project Conclusions</a>
+                <a href="#exploration"
+                    class="sidebar-link block text-emerald-600 border-t border-slate-100 pt-3 mt-2 flex items-center space-x-1 font-black">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
+                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                        </path>
+                    </svg>
+                    <span>Live Dashboard Exploration</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN DATA CASE CONTENT AREA -->
+        <main
+            class="col-span-1 lg:col-span-3 space-y-12 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+
+            <!-- Project Main Identity Title Block (Fixed Ghost Movement Bug) -->
+            <header class="border-b border-slate-100 pb-6">
+                <span
+                    class="inline-flex items-center px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-widest bg-emerald-50 text-emerald-700 rounded border border-emerald-100 mb-3">
+                    Financial Risk & Analytics Engineering
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-[1.2]">
+                    LendIQ: End-to-End Credit Risk Architecture & Automated Underwriting
+                </h1>
+                <p class="text-slate-500 mt-3 font-normal">
+                    Optimizing FinTech loan portfolios from a 49% default crisis to a $213M capital protection pipeline
+                    using PostgreSQL Medallion structures and Power BI.
+                </p>
+
+                <!-- System Disclaimer Container (Fixed Shrink Icon Bug) -->
+                <div
+                    class="mt-5 p-4 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start space-x-3 text-xs text-slate-600">
+                    <div class="w-5 h-5 flex-shrink-0 text-emerald-600 mt-0.5">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <p><strong class="text-slate-950 font-bold">System Architecture Note:</strong> The fully operational
+                        Power BI analytical environment is consolidated within the <a href="#exploration"
+                            class="text-emerald-700 font-bold underline hover:text-emerald-800">Live Dashboard
+                            Exploration</a> section at the bottom of this document for comprehensive diagnostic testing
+                        and filtering.</p>
+                </div>
+            </header>
+
+            <!-- TYPOGRAPHIC MINIMALIST METRIC LEDGER -->
+            <section class="border-b border-slate-100 pb-5 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Protected
+                        Capital</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5"><span
+                            class="text-emerald-600">$213.32M</span></h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Saved Corporate Assets</p>
+                </div>
+                <div class="sm:border-l sm:border-slate-100 sm:pl-6">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Baseline Default
+                        Rate</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5"><span
+                            class="text-rose-600">49.28%</span></h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Legacy Underwriting Risk</p>
+                </div>
+                <div class="sm:border-l sm:border-slate-100 sm:pl-6">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Model Approval
+                        Rate</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5">53.99%</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Automated Approval Flow</p>
+                </div>
+            </section>
+
+            <!-- SECTION 1: STRATEGIC FOUNDATIONS -->
+            <article id="foundations" class="scroll-mt-24 space-y-4">
+                <div>
+                    <!-- Upscaled Technical Phase Badge -->
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase
+                        01: Portfolio Simulation</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">1. Strategic Foundations & The Business
+                        Challenge</h2>
+                </div>
+                <p>
+                    Institutional credit underwriting models often introduce severe processing bottlenecks when
+                    operational scaling outpaces risk infrastructure. For <strong
+                        class="text-slate-950 font-extrabold">LendIQ</strong>, a rapidly growing FinTech startup
+                    delivering on the promise of "money in your account in 10 minutes," exponential portfolio expansion
+                    triggered unprecedented volatility in borrower default behaviors. To address this exposure, this
+                    end-to-end data architecture was engineered to simulate, clean, and analyze retail credit risk at
+                    scale, providing a robust proof of concept before deploying models into live production.
+                </p>
+
+                <!-- CALLOUT CONTAINER: RISK INJECTION -->
+                <div class="bg-emerald-50/60 border border-emerald-100 p-5 rounded-xl space-y-3">
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-emerald-600 text-white rounded uppercase tracking-wider mb-1">Methodological
+                        Framework</span>
+                    <h3 class="font-black text-slate-950">1.1 Portfolio Stress & Algorithmic Risk Injection</h3>
+                    <p>
+                        Due to strict compliance restrictions and confidentiality laws governing financial records, a
+                        comprehensive data simulation framework was engineered in <strong
+                            class="text-slate-950 font-bold">Python</strong> to establish a baseline of <strong
+                            class="text-slate-950 font-bold">50,000 unique credit applications</strong>, representing a
+                        cumulative transaction volume of <strong class="text-slate-950 font-bold">$1,023.83M</strong> in
+                        total capital loaned.
+                    </p>
+                    <ul class="space-y-2 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Algorithmic Risk Injection:</strong> A non-linear
+                            logit probability framework mathematically tied loan default behavior directly to structural
+                            borrower vulnerabilities, such as high Debt-to-Income (DTI) ratios and employment
+                            instability.</li>
+                        <li><strong class="text-slate-950 font-bold">Pipeline Data Corruption:</strong> The clean
+                            simulation was injected with severe data quality anomalies, including raw currency text
+                            containing symbols and commas, negative operational noise in age profiles, and systematic
+                            spelling typos in categorical fields.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">1.2 Exploratory Insights & Validation</h3>
+                    <p>
+                        Prior to migrating the information into the relational database layers, an extensive Exploratory
+                        Data Analysis (EDA) phase verified that the programmatic risk logic operated exactly as
+                        intended. The statistical summary confirmed that the embedded risk function successfully
+                        stratified the population based on financial vulnerability, proving that the dataset held
+                        genuine statistical signals rather than absolute randomness.
+                    </p>
+                </div>
+            </article>
+
+            <!-- SECTION 2: MEDALLION ARCHITECTURE -->
+            <article id="medallion" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <!-- Upscaled Technical Phase Badge -->
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase
+                        02: Relational Ingestion</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">2. Data Cleansing & Medallion
+                        Architecture</h2>
+                </div>
+                <p>
+                    Transforming highly corrupted raw records into a high-performance analytical environment requires a
+                    systematic data engineering framework. Managing severe structural anomalies is critical to prevent
+                    skewed profiles from entering institutional business intelligence layers. To achieve this, a <strong
+                        class="text-slate-950 font-extrabold">Medallion Architecture</strong> (Bronze &rarr; Silver
+                    &rarr; Gold) was implemented within <strong
+                        class="text-slate-950 font-extrabold">PostgreSQL</strong>, deploying target transformation
+                    scripts to enforce type integrity, standardize fragmented categorical dimensions, and structure a
+                    definitive relational model optimized for rapid query execution.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.1 Schema Layering & Numeric Remediation (Bronze to Silver)
+                    </h3>
+                    <p>
+                        The ingestion phase (Bronze layer) received the raw, simulated records containing high volumes
+                        of non-numeric noise. Quantitative attributes designated for risk calculations, such as annual
+                        income streams, were masked as text strings due to embedded currency symbols ($) and punctuation
+                        formatting. To transition these attributes into the validated <strong
+                            class="text-slate-950 font-bold">Silver layer</strong>, the processing pipeline executed
+                        targeted string parsing functions:
+                    </p>
+                    <ul class="space-y-1 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Currency Cleaning:</strong> Stripped markers and
+                            commas programmatically, casting fields into standardized floating-point metrics to enable
+                            mathematical aggregation.</li>
+                        <li><strong class="text-slate-950 font-bold">Boundary Filtering:</strong> Outliers and
+                            operational noise within age profiles (such as negative numbers or unrealistic anomalies)
+                            were neutralized using logical constraints, restoring data type compliance across the core
+                            portfolio.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.2 Categorical Standardization & Text Alignment</h3>
+                    <p>
+                        In parallel with numeric corrections, the transformation layers addressed severe linguistic
+                        inconsistencies within high-weight categorical strings. Operational features like employment
+                        status and loan tracking suffered from systematic casing mismatches and typographical errors
+                        introduced during the pipeline corruption phase.
+                    </p>
+                    <p>
+                        Variances in uppercase and lowercase strings caused identical corporate categories to register
+                        as completely distinct entities, fragmenting the true portfolio distribution. Text alignment
+                        arrays consolidated these misspelled variations into five distinct, clean corporate classes:
+                        <strong class="text-slate-950 font-bold">Full-time, Part-time, Freelance, Self-employed, and
+                            Unemployed</strong>, effectively condensing chaotic transactional logs into predictable
+                        attributes.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.3 Relational Model & Gold Fact Formulation (Silver to Gold)
+                    </h3>
+                    <p>
+                        The final milestone of the infrastructure pipeline involved loading the cleansed Silver tables
+                        into a structured <strong class="text-slate-950 font-bold">Star Schema (Gold layer)</strong>
+                        designed for optimal business intelligence performance. Transactional flat tables frequently
+                        suffer from query degradation when executing complex risk metrics across millions of rows.
+                    </p>
+                    <p>
+                        To maximize processing speeds and eliminate data redundancy, the architecture isolated
+                        descriptive attributes into separate dimension tables, linking them directly to a central
+                        transaction layer. This definitive table, designated as the <strong
+                            class="text-slate-950 font-bold">Gold Fact Layer</strong>, hosts the validated historical
+                        credit portfolio accompanied by automated scoring flags, allowing the downstream visualization
+                        engine to execute real-time calculations over stable, governed data streams.
+                    </p>
+                </div>
+
+                <!-- STATIC SCHEMA FIGURE INTERFACES -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 mt-4">
+                    <img src="img/star_schema.png" alt="LendIQ Gold Star Schema Relational Model"
+                        class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure
+                        1.1: Relational Architecture Layer / Gold Star Schema Optimized in PostgreSQL</p>
+                </div>
+            </article>
+
+            <!-- SECTION 3: PORTFOLIO PERFORMANCE -->
+            <article id="performance" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <!-- Upscaled Technical Phase Badge -->
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase
+                        03: Macro Diagnostics</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">3. Portfolio Performance & Executive
+                        Metrics</h2>
+                </div>
+                <p>
+                    Transitioning from data engineering pipeline validation to macroscopic business diagnostics allows
+                    executive leadership to audit the health of active capital allocations. By converting the cleansed
+                    PostgreSQL relational layers into high-level commercial key performance indicators (KPIs), risk
+                    management teams can pinpoint specific vulnerabilities across demographic clusters and geographic
+                    zones. The following analysis establishes the baseline portfolio performance under the legacy
+                    underwriting guidelines, exposing the core drivers behind LendIQ’s capital exposure.
+                </p>
+
+                <!-- STATIC FIGURE IMAGE BLOCK ONE -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/executive_dashboard.png" alt="LendIQ Executive Summary System View"
+                        class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure
+                        1.2: Portfolio Operational Assessment Profile / Historical Baseline Landscape</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.1 Macro Key Performance Indicators (KPIs)</h3>
+                    <p>
+                        The active portfolio encompasses exactly <strong class="text-slate-950 font-bold">50,000 unique
+                            loan agreements</strong>, aggregating a massive exposure of <strong
+                            class="text-slate-950 font-bold">$1,023.83M</strong> in total capital loaned. Under the
+                        legacy rules, the credit environment reflects severe systemic distress, with a portfolio-wide
+                        <strong class="text-rose-600 font-extrabold">Default Rate standing at 49.28%</strong>. This
+                        extreme default velocity translates directly into <strong
+                            class="text-slate-950 font-bold">$601.34M in Capital at Risk</strong>. The uniform
+                        distribution of default volume across loan sizes indicates that losses are driven by a
+                        structural failure in risk boundaries across the entire applicant spectrum rather than being
+                        isolated within a few massive loan allocations, highlighting an urgent operational need for an
+                        automated scoring scorecard.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.2 Risk Stratification by Borrower Demographics</h3>
+                    <p>
+                        Granular segmentation of borrower behaviors reveals that individual stability attributes exert a
+                        massive, predictable influence on repayment performance. When dissecting credit default rates by
+                        employment stability and structural income brackets, clear risk boundaries emerge:
+                    </p>
+                    <ul class="space-y-1 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Employment Status Risk:</strong> The <strong
+                                class="text-slate-950 font-bold">Unemployed</strong> cohort experiences an overwhelming
+                            <strong class="text-rose-600 font-extrabold">89.25% default rate</strong>, representing the
+                            single most critical exposure in the portfolio. Non-traditional segments like Freelance
+                            (<strong class="text-slate-950 font-bold">59.35%</strong>) and Self-employed (<strong
+                                class="text-slate-950 font-bold">59.00%</strong>) track exceptionally close, while
+                            structured employment offers significantly safer parameters, dropping to <strong
+                                class="text-slate-950 font-bold">38.49%</strong> for Part-time and a portfolio low of
+                            <strong class="text-slate-950 font-bold">37.35%</strong> for Full-time staff.</li>
+                        <li><strong class="text-slate-950 font-bold">Income Bracket Stratification:</strong> Financial
+                            capacity directly correlates with repayment stability. Applicants in the Low-income bracket
+                            register a <strong class="text-slate-950 font-bold">61.75%</strong> default rate,
+                            Medium-income profiles track at <strong class="text-slate-950 font-bold">51.54%</strong>,
+                            and High-income cohorts experience a substantial drop down to <strong
+                                class="text-slate-950 font-bold">40.20%</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.3 Geospatial Concentration & Temporal Stability</h3>
+                    <p>
+                        Evaluating regional capital allocation via geospatial treemaps indicates that portfolio risk is
+                        highly concentrated within specific boundaries. <strong class="text-slate-950 font-bold">Texas
+                            (TX)</strong> and <strong class="text-slate-950 font-bold">Pennsylvania (PA)</strong> hold
+                        the highest shares of capital concentration, followed closely by critical portfolio volumes
+                        clustered across California (CA), Illinois (IL), New York (NY), and Arizona (AZ).
+                    </p>
+                    <p>
+                        Concurrently, evaluating the operational timeline from January through December demonstrates
+                        that monthly loan volumes and baseline default trends remain exceptionally stable over time.
+                        This temporal flatline proves that default probability is driven entirely by borrower structural
+                        vulnerabilities rather than macroeconomic seasonality, mathematically validating that the
+                        portfolio's crisis is an internal underwriting issue that can be solved via algorithmic credit
+                        scoring.
+                    </p>
+                </div>
+            </article>
+
+            <!-- SECTION 4: CREDIT SCORING OPTIMIZATION -->
+            <article id="optimization" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <!-- Upscaled Technical Phase Badge -->
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase
+                        04: Predictive Modeling</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">4. Algorithmic Control & Credit Scoring
+                        Optimization</h2>
+                </div>
+                <p>
+                    Transitioning from macroscopic portfolio diagnostics to algorithmic validation allows risk
+                    leadership to measure the precision of predictive boundaries and quantify the volume of
+                    institutional capital insulated from systemic default. To mitigate the underwriting crisis, an
+                    automated credit scoring engine was deployed across the active portfolio. By converting statistical
+                    probability distributions into rigid, automated decision rules, the infrastructure systematically
+                    screens out high-risk applications, establishing a reliable equilibrium between commercial growth
+                    and capital preservation.
+                </p>
+
+                <!-- STATIC FIGURE IMAGE BLOCK TWO -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/predictive_dashboard.png" alt="LendIQ Predictive Scoring System View"
+                        class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure
+                        1.3: Algorithmic Underwriting Interface / Risk Threshold Optimization</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.1 Classification Matrix & Capital Protection</h3>
+                    <p>
+                        The predictive underwriting engine evaluated the baseline of 50,000 credit applications,
+                        executing a stable <strong class="text-slate-950 font-bold">Automated Model Approval Rate of
+                            53.99%</strong> (representing 26,996 credit lines successfully opened). By implementing this
+                        systematic screening layer, the infrastructure effectively isolated toxic debt profiles before
+                        capital exposure could occur, generating a proven <strong
+                            class="text-emerald-600 font-extrabold">Protected Capital valuation of $213.32M</strong> in
+                        saved corporate assets.
+                    </p>
+                    <p>
+                        A granular audit of the operational Classification Matrix reveals the mathematical precision of
+                        the system:
+                    </p>
+                    <ul class="space-y-1 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Risk Containment:</strong> Out of the total
+                            application pool, the framework designated <strong
+                                class="text-slate-950 font-bold">7,513</strong> files for absolute rejection.</li>
+                        <li><strong class="text-slate-950 font-bold">Precision Auditing:</strong> Within this isolated
+                            rejection cluster, the model successfully caught and stopped <strong
+                                class="text-slate-950 font-bold">2,518</strong> completely charged-off accounts and
+                            <strong class="text-slate-950 font-bold">3,962</strong> severely late borrowers, minimizing
+                            capital leakage while misclassifying a textually negligible volume of stable accounts.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.2 Score Band Stratification & Decision Boundaries</h3>
+                    <p>
+                        The credit risk environment tracks across a mean portfolio metric of <strong
+                            class="text-slate-950 font-bold">586 average credit score points</strong> (on a simulated
+                        scale of 100 to 800). To convert this statistical spectrum into programmatic workflows, the
+                        architecture establishes strict decision boundaries that eliminate underwriting subjectivity:
+                    </p>
+                    <ul class="space-y-1 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Automated Rejection (Bands 100–300):</strong> Early
+                            tiers are routed into immediate system rejection due to extreme concentrations of credit
+                            failure.</li>
+                        <li><strong class="text-slate-950 font-bold">Hybrid Manual Revision (Bands 400–500):</strong>
+                            Intermediate brackets operate as a hybrid auditing layer, flagging applications that require
+                            secondary parameter checks.</li>
+                        <li><strong class="text-slate-950 font-bold">Automated Approval (Bands 600–800):</strong>
+                            High-tier segments bypass operational constraints entirely to achieve immediate approval
+                            status, with application volume peaking heavily at the <strong
+                                class="text-slate-950 font-bold">700</strong> score band with more than <strong
+                                class="text-slate-950 font-bold">12,000</strong> successful credits.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.3 Empirical Validation of Default Rate Decay</h3>
+                    <p>
+                        The financial reliability of the credit scoring infrastructure is ultimately proven by the
+                        powerful non-linear decay of actual losses as the assigned credit score increases. Tracking
+                        empirical loan performance against the established numerical brackets validates the underlying
+                        predictive logic.
+                    </p>
+                    <p>
+                        The credit default rate experiences a steep and continuous downward trajectory, dropping from
+                        near-maximum concentrations in the lowest score tiers down to a <strong
+                            class="text-emerald-600 font-extrabold">portfolio low of approximately 23% within the
+                            maximum 800 score band</strong>. This systematic contraction of default behaviors confirms
+                        that the grading algorithm is highly stable, mathematically reflective of real-world credit
+                        risks, and fully optimized for secure corporate scaling.
+                    </p>
+                </div>
+            </article>
+
+            <!-- SECTION 5: STRATEGIC RECOMMENDATIONS & CONCLUSIONS -->
+            <article id="recommendations" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <!-- Upscaled Technical Phase Badge -->
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase
+                        05: Executive Action</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">5. Strategic Recommendations & Project
+                        Conclusions</h2>
+                </div>
+                <p>
+                    Translating empirical data findings and algorithmic performance metrics into actionable corporate
+                    strategy allows risk leadership to transition from reactive crisis management to proactive portfolio
+                    optimization. The deployment of this end-to-end framework proves that integrating automated data
+                    engineering pipelines with predictive decision boundaries secures institutional liquidity while
+                    scaling operations. To maximize long-term business returns, LendIQ executive leadership should adopt
+                    immediate credit policy adjustments and execute the technical infrastructure roadmap outlined below.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">5.1 Financial Impact & Operational Milestones</h3>
+                    <p>
+                        The technical execution of this data solution successfully processed a highly chaotic baseline
+                        of <strong class="text-slate-950 font-bold">50,000 records</strong>, proving that severe data
+                        quality barriers can be programmatically resolved in PostgreSQL without sacrificing operational
+                        velocity. The framework achieved a stable Automated Approval Rate of <strong
+                            class="text-slate-950 font-bold">53.99%</strong>, establishing a repeatable mechanism to
+                        scale corporate volume safely. Most critically, by isolating toxic debt profiles through the
+                        scoring engine, the architecture delivered a proven <strong
+                            class="text-emerald-700 font-extrabold">Protected Capital valuation of $213.32M</strong>,
+                        safeguarding institutional liquidity and demonstrating the massive financial return of
+                        structured data investments.
+                    </p>
+                </div>
+
+                <!-- STRATEGIC POLICY NOTIFICATIONS CALLOUT CONTAINER -->
+                <div class="bg-slate-50 border border-slate-100 p-5 rounded-xl space-y-3">
+                    <span
+                        class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-200 text-slate-700 rounded border border-slate-300 uppercase tracking-wider mb-1">Corporate
+                        Deployment Roadmap</span>
+                    <h3 class="font-black text-slate-950">5.2 Data-Driven Risk Mitigation Policies</h3>
+                    <ul class="space-y-3 list-none pl-0">
+                        <li class="border-l-2 border-emerald-600 pl-3">
+                            <strong class="text-slate-950 font-bold block">Outright Rejection Rule:</strong> Given that
+                            the unemployed cohort exhibits an overwhelming <strong
+                                class="text-rose-600 font-bold">89.25%</strong> default rate, the automated engine
+                            should enforce an outright rejection policy for this specific segment, eliminating them from
+                            manual loops to preserve expensive human auditing resources.
+                        </li>
+                        <li class="border-l-2 border-emerald-600 pl-3">
+                            <strong class="text-slate-950 font-bold block">Stricter Capital Verification:</strong>
+                            Applications from freelance and self-employed individuals must incorporate rigorous
+                            validation parameters, as their default rates hover near <strong
+                                class="text-slate-950 font-bold">60%</strong>.
+                        </li>
+                        <li class="border-l-2 border-emerald-600 pl-3">
+                            <strong class="text-slate-950 font-bold block">Dynamic Debt-to-Income (DTI)
+                                Ceilings:</strong> To protect capital within the low-income bracket (<strong
+                                class="text-slate-950 font-bold">61.75%</strong> default rate), maximum approved loan
+                            amounts must scale down automatically based on real-time DTI triggers.
+                        </li>
+                        <li class="border-l-2 border-emerald-600 pl-3">
+                            <strong class="text-slate-950 font-bold block">Mandatory Hybrid Auditing:</strong> The 400
+                            and 500 score bands must be designated as high-priority revision zones where secondary
+                            demographic variables are cross-referenced to rescue creditworthy applicants while filtering
+                            out hidden default threats.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">5.3 Technical Infrastructure Roadmap & Scalability</h3>
+                    <p>
+                        To transition this framework from a local proof of concept into a fully governed production
+                        ecosystem, the technical architecture must scale across three core phases:
+                    </p>
+                    <ol class="space-y-2 list-decimal pl-5">
+                        <li><strong class="text-slate-950 font-bold">Cloud Data Warehouse Migration:</strong> The data
+                            pipeline should be migrated from local environments into Cloud Warehouse Architectures,
+                            establishing automated extraction schedules to ensure downstream presentation layers reflect
+                            real-time credit performance rather than static files.</li>
+                        <li><strong class="text-slate-950 font-bold">Algorithmic Governance:</strong> Implementing
+                            robust version control across the Python modeling scripts will protect scoring integrity and
+                            ensure compliance as new credit variables are introduced into the underwriting matrix over
+                            time.</li>
+                        <li><strong class="text-slate-950 font-bold">Continuous Monitoring & Alerting:</strong>
+                            Deploying automated alert systems within the business intelligence platform will instantly
+                            flag sudden shifts in macro default trends or early signs of model drift, allowing risk
+                            teams to dynamically recalibrate score boundaries and maintain optimal capital preservation
+                            goals.</li>
+                    </ol>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- CONSOLIDATED HIGH-VOLUME INTERACTIVE EXPERIMENTATION COMPONENT -->
+    <!-- EXTRACTED ENTIRELY OUTSIDE THE GRID LAYOUT FOR GENEROUS 16:9 PROPORTIONAL WIDTH -->
+    <section id="exploration"
+        class="scroll-mt-24 max-w-6xl mx-auto px-6 pb-12 space-y-4 border-t border-slate-100 pt-10">
+        <div>
+            <span
+                class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-emerald-50 text-emerald-700 rounded border border-emerald-100 uppercase tracking-wider mb-2">Production
+                Sandbox System</span>
+            <h2 class="text-xl font-black text-slate-950 tracking-tight">Live Dashboard Exploration</h2>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            Use the navigation workspace buttons below to alternate natively between the historical macro ledger profile
+            and the algorithmic threshold tuning matrix. This embedded system allows real-time metric cross-filtering
+            across geographic regions and income brackets at full 100% resolution scaling.
+        </p>
+
+        <!-- Native Multi-View Tab Switch Controller Architecture (Optimized Fixed Large Screen Desktop Height & Proportional Aspect Width) -->
+        <div class="figure-container rounded-xl overflow-hidden bg-slate-950 mt-4 flex flex-col w-full shadow-lg">
+            <div class="bg-slate-900 border-b border-slate-950 p-3 flex space-x-2 text-xs font-bold">
+                <button id="btn-exec" onclick="switchDashboard('exec')"
+                    class="tab-btn px-3 py-1.5 rounded border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-all active">
+                    Executive Portfolio Summary
+                </button>
+                <button id="btn-pred" onclick="switchDashboard('pred')"
+                    class="tab-btn px-3 py-1.5 rounded border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                    Predictive Scoring Matrix
+                </button>
+            </div>
+            <div class="w-full h-[650px] relative bg-slate-900">
+                <!-- Clean Unified Framework Core Iframe Container (Fully fixed scale height matching macro widescreen desktop layouts) -->
+                <iframe id="sandbox-frame" title="LendIQ Interactive Intelligence Suite"
+                    class="w-full h-full border-0 absolute top-0 left-0 z-10"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiMzQ3MjAzYzUtZGNhNS00MTA2LWIxODYtMjNlNTI2MDU5ZmRiIiwidCI6IjgwMGRiNmJmLTc3ZmItNGQ4Ni1hZWFmLTBmNzJlODYwNDBlOCIsImMiOjR9&pageName=68cc52f1c5dab09a9d7d"
+                    allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimalist Document Corporate Footer -->
+    <footer class="border-t border-slate-100 bg-slate-50 text-slate-400 text-[11px] py-8">
+        <div
+            class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+            <p>&copy; 2026 Leonardo Castellanos. FinTech Case Study &bull; Technical Architecture Documentation.</p>
+            <p class="font-bold uppercase tracking-widest text-[#059669] text-[10px]">PostgreSQL Medallion Data Engine
+            </p>
+        </div>
+    </footer>
+
+    <!-- INLINE NATIVE SWITCH NAVIGATION LOGIC LAYER -->
+    <script>
+        function switchDashboard(view) {
+            const frame = document.getElementById('sandbox-frame');
+            const btnExec = document.getElementById('btn-exec');
+            const btnPred = document.getElementById('btn-pred');
+
+            // Clean global hash configurations derived from Microsoft Business Tenant settings
+            const baseUrl = "https://app.powerbi.com/view?r=eyJrIjoiMzQ3MjAzYzUtZGNhNS00MTA2LWIxODYtMjNlNTI2MDU5ZmRiIiwidCI6IjgwMGRiNmJmLTc3ZmItNGQ4Ni1hZWFmLTBmNzJlODYwNDBlOCIsImMiOjR9";
+            const execPage = "68cc52f1c5dab09a9d7d";
+            const predPage = "bc052f64c5b93dad5816";
+
+            if (view === 'exec') {
+                frame.src = `${baseUrl}&pageName=${execPage}`;
+                btnExec.classList.add('active');
+                btnPred.classList.remove('active');
+            } else if (view === 'pred') {
+                frame.src = `${baseUrl}&pageName=${predPage}`;
+                btnPred.classList.add('active');
+                btnExec.classList.remove('active');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

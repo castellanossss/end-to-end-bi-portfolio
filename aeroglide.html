@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroGlide Case Study | Leonardo Castellanos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="img/terminal.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(239, 49, 76, 0.01) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(239, 49, 76, 0.01) 0px, transparent 50%);
+            background-attachment: fixed;
+            hyphens: none;
+        }
+        .sidebar-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar-link:hover {
+            color: #EF314C;
+            padding-left: 4px;
+        }
+        .figure-container {
+            border: 1px solid rgba(15, 23, 42, 0.06);
+        }
+        .tab-btn.active {
+            background-color: #EF314C;
+            color: #ffffff;
+            border-color: #EF314C;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-red-100 selection:text-red-900">
+
+    <!-- Header Navigation Bar -->
+    <nav class="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-xs font-bold text-slate-500 hover:text-[#EF314C] transition-colors flex items-center space-x-1.5">
+                    <svg class="w-4 h-4 fill-none stroke-[2]" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    <span>Back to Portfolio</span>
+                </a>
+                <span class="text-slate-200">|</span>
+                <span class="text-xs font-black uppercase tracking-widest text-slate-900">AeroGlide Executive Brief</span>
+            </div>
+            <div>
+                <a href="pdf/aeroglide_executive_report.pdf" target="_blank" class="text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 bg-slate-900 text-white rounded hover:bg-[#EF314C] transition-colors">
+                    View Full PDF Report
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Layout Grid Container -->
+    <div class="max-w-6xl mx-auto px-6 pt-12 pb-6 grid grid-cols-1 lg:grid-cols-4 gap-12">
+        
+        <!-- PERSISTENT SIDEBAR INDEX NAVIGATION (Desktop Only) -->
+        <aside class="hidden lg:block lg:col-span-1">
+            <div class="sticky top-28 space-y-5 border-l border-slate-100 pl-4 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <p class="text-[10px] font-black tracking-widest text-slate-900 uppercase mb-4">Report Index</p>
+                <a href="#foundations" class="sidebar-link block">1. Strategic Foundations</a>
+                <a href="#pipeline" class="sidebar-link block">2. Data Cleaning Architecture</a>
+                <a href="#architecture" class="sidebar-link block">3. Dimensional Modeling</a>
+                <a href="#insights" class="sidebar-link block">4. Analytical Insights</a>
+                <a href="#protocols" class="sidebar-link block">5. Prescriptive Protocols</a>
+                <a href="#exploration" class="sidebar-link block text-[#EF314C] border-t border-slate-100 pt-3 mt-2 flex items-center space-x-1 font-black">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    <span>Live Dashboard Exploration</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN DATA CASE CONTENT AREA -->
+        <main class="col-span-1 lg:col-span-3 space-y-12 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            
+            <!-- Project Main Identity Title Block -->
+            <header class="border-b border-slate-100 pb-6">
+                <span class="inline-flex items-center px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-widest bg-red-50 text-[#EF314C] rounded border border-red-100 mb-3">
+                    Supply Chain Analytics & Data Engineering
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight leading-[1.2]">
+                    AeroGlide: Telemetry Framework & Inventory Optimization Architecture
+                </h1>
+                <p class="text-slate-500 mt-3 font-normal">
+                    Dismantling a 5,095-day overstock crisis and reclaiming $20.8M in trapped working capital using Python data cleaning pipelines and optimized Star Schema analytics.
+                </p>
+                
+                <!-- System Disclaimer Container (Fixed Shrink Icon & Primitive Circle Geometry Definitively) -->
+                <div class="mt-5 p-4 bg-red-50/30 rounded-xl border border-red-100/50 flex items-start space-x-3 text-xs text-slate-600">
+                    <div class="w-5 min-w-5 h-5 flex-shrink-0 text-[#EF314C] mt-0.5 flex items-center justify-center">
+                        <svg class="w-5 h-5 fill-none stroke-[2.2]" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <p><strong class="text-slate-950 font-bold">System Architecture Note:</strong> The fully operational Power BI analytical environment is consolidated within the <a href="#exploration" class="text-[#EF314C] font-bold underline hover:text-red-700">Live Dashboard Exploration</a> section at the bottom of this document for comprehensive diagnostic testing and filtering.</p>
+                </div>
+            </header>
+
+            <!-- TYPOGRAPHIC MINIMALIST METRIC LEDGER -->
+            <section class="border-b border-slate-100 pb-5 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4">
+                <div>
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Inactive Capital Volume</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5"><span class="text-[#EF314C]">$20.8M</span></h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Trapped Liquidity Assets</p>
+                </div>
+                <div class="sm:border-l sm:border-slate-100 sm:pl-6">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Average Days of Supply</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5"><span class="text-[#EF314C]">5,095 Days</span></h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">~14 Years of Stagnant Stock</p>
+                </div>
+                <div class="sm:border-l sm:border-slate-100 sm:pl-6">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Warehouse Saturation Rate</span>
+                    <h3 class="text-2xl font-black tracking-tight text-slate-950 mt-0.5">84.0%</h3>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Fulfillment Network Storage Capacity</p>
+                </div>
+            </section>
+
+            <!-- SECTION 1: STRATEGIC FOUNDATIONS -->
+            <article id="foundations" class="scroll-mt-24 space-y-4">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase 01: Supply Chain Telemetry</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">1. Strategic Foundations & The Business Challenge</h2>
+                </div>
+                <p>
+                    This executive brief delivers a high-level strategic overview of the operational telemetry and business intelligence solutions engineered for <strong class="text-slate-950 font-extrabold">AeroGlide Distribution Group (ADG)</strong>. It establishes a foundational understanding of the critical financial constraints currently impacting the supply chain network, outlines the core analytical objectives of the deployed data architecture, and highlights the prescriptive corporate impact expected from optimizing the group's working capital velocity.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">1.1 Strategic Context & Operational Baseline</h3>
+                    <p>
+                        AeroGlide Distribution Group (ADG) maintains a powerful market presence, demonstrating robust commercial velocity with a total volume of <strong class="text-slate-950 font-bold">3,626,727 units sold</strong> and generating a substantial financial footprint of <strong class="text-slate-950 font-bold">$1,484.6M ($1.48 Billion) in Total Gross Revenue</strong>. Backed by an exceptionally strong baseline <strong class="text-slate-950 font-bold">Net Profit Margin of 88.9%</strong>, the company's core commercial engine is fundamentally sound. Volume is distributed dynamically across four major macro-categories, led by Climate Control (1,086.39K units) and followed symmetrically by Consumer Electronics, Domestic Appliances, and Smart Home Automation, each averaging over 840K units shifted. These performance metrics confirm that ADG's business vulnerability is not driven by demand deficiencies or top-line revenue generation, but by deep systemic inefficiencies hidden within its downstream inventory and logistics pipelines.
+                    </p>
+                </div>
+
+                <!-- CALLOUT CONTAINER: LIQUIDITY CONSTRICTION -->
+                <div class="bg-red-50/20 border border-red-100/60 p-5 rounded-xl space-y-3">
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-[#EF314C] text-white rounded uppercase tracking-wider mb-1">Financial Stagnation Note</span>
+                    <h3 class="font-black text-slate-950">1.2 The Core Financial Bottleneck: Liquidity Constriction</h3>
+                    <p>
+                        Despite exceptional sales throughput, ADG’s operational efficiency is compromised by a severe capital over-allocation crisis. Supply chain telemetry reveals an unsustainable network saturation state, with a <strong class="text-slate-950 font-bold">Current Inventory Level reaching 50,628,108 units</strong>, which translates to an aggressive <strong class="text-rose-600 font-bold">84% warehouse storage capacity saturation</strong>.
+                    </p>
+                    <p>
+                        The most critical operational pathology is exposed by the network’s macro velocity indicator: an average <strong class="text-rose-600 font-bold">Days of Supply of 5,095 Days</strong>. At the current sales run-rate, ADG is holding nearly <strong class="text-slate-950 font-bold">14 years of unliquidated physical stock</strong> within its regional distribution nodes. This massive operational drag is further exacerbated by supply chain friction, with supplier lead times suffering a persistent +15% delay (averaging 13.7 days) and a high-risk 6.8% stockout rate exposing critical synchronization failures. Financially, this structural distortion results in an immediate <strong class="text-rose-600 font-bold">Inactive Capital Volume of $20.8 Million completely frozen</strong> in illiquid inventory assets, incurring heavy carry costs and restricting company cash flow velocity.
+                    </p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">1.3 System Objectives & Analytical Scope</h3>
+                    <p>
+                        To diagnose, isolate, and mitigate this capital stagnation, an enterprise-grade Business Intelligence (BI) framework was engineered to transition ADG from a reactive supply chain posture to a prescriptive, data-driven operational model. Built upon a unified, programmatically cleaned ETL pipeline and an optimized Star Schema architecture, the platform delivers multi-dimensional telemetry across three interconnected strategic pillars:
+                    </p>
+                    <ul class="space-y-1 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Geographic Distribution & Spatial Auditing:</strong> Mapping transactional clusters and profit margins across the 25 active US state nodes to identify regional performance deltas.</li>
+                        <li><strong class="text-slate-950 font-bold">Capital Over-Allocation & Risk Categorization:</strong> Segmenting the active inventory portfolio via an automated multi-layered Overstock Risk Level matrix to flag products in Critical Overstock.</li>
+                        <li><strong class="text-slate-950 font-bold">Temporal Trends & Supply Chain Velocity:</strong> Synthesizing seasonal demand rankings and tracking vendor lead-time consistency to align procurement velocity with physical product consumption.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- SECTION 2: DATA CLEANING ARCHITECTURE -->
+            <article id="pipeline" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase 02: Python ETL Ingestion</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">2. Data Cleansing & Pipeline Governance</h2>
+                </div>
+                <p>
+                    Transforming highly fragmented transactional data into high-value strategic intelligence requires an advanced programmatic infrastructure. Due to legacy manual entry operations at the warehouse layer, the raw datasets suffered from text string distortion, relational key fragmentation, and impossible chronological paradoxes. To enforce absolute data governance before ingestion, an end-to-end data engineering pipeline was developed in <strong class="text-slate-950 font-extrabold">Python using Pandas and NumPy</strong> within a modular execution workflow.
+                </p>
+
+                <!-- CODE BOX 1 -->
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.1 Geographic Standardization and Spatial Dimension Unification</h3>
+                    <p>
+                        The raw spatial inputs recorded over one hundred distinct textual variations for the same 25 operational states due to capitalization mismatches, spelling variants, and punctuation errors. Leaving data in this state fragments the true portfolio metrics. To cure this, a reverse mapping vector matrix was enforced to unify all variations into definitive two-letter postal codes:
+                    </p>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre># Geographic Reverse Unification Matrix Execution
+clean_state_mapping = {
+    "California": "CA", "calif": "CA", "C.A.": "CA", "CA": "CA",
+    "Washington": "WA", "wash": "WA", "W.A.": "WA", "WA": "WA",
+    "Oregon": "OR", "oreg": "OR", "O.R.": "OR", "OR": "OR",
+    "New York": "NY", "ny_state": "NY", "N.Y.": "NY", "NY": "NY",
+    "Texas": "TX", "tex": "TX", "T.X.": "TX", "TX": "TX"
+    # Unified across all 25 operational state nodes...
+}
+
+df['State'] = df['State'].map(clean_state_mapping)
+assert df['State'].nunique() == 25, "Geographic constraint validation failure"</pre>
+                    </div>
+                </div>
+
+                <!-- CODE BOX 2 -->
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.2 Inventory Volume Resolution and Operational Imputation</h3>
+                    <p>
+                        Data corruption in the inventory counts manifested as missing data and physically impossible negative values. To resolve these discrepancies without fabricating artificial volume, a two-layer correction mechanism was executed. First, missing stock records were resolved via operational balance imputation by utilizing the units sold count as a safe baseline to guarantee transaction history consistency. Second, all negative values were adjusted to zero, representing absolute stockout events:
+                    </p>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre># Layer One: Impute missing stock records using units sold as minimum baseline
+df['Current_Stock'] = df['Current_Stock'].fillna(df['Units_Sold'])
+
+# Layer Two: Convert invalid negative quantities into absolute zero stockout markers
+df.loc[df['Current_Stock'] < 0, 'Current_Stock'] = 0
+
+# Enforce integer structural integrity type casting
+df['Current_Stock'] = df['Current_Stock'].astype('int64')</pre>
+                    </div>
+                </div>
+
+                <!-- CODE BOX 3 -->
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.3 Chronological Validation and Temporal Paradox Resolution</h3>
+                    <p>
+                        The data audit identified several thousand lines where warehouse reception dates preceded the original purchase order dates. To resolve these impossible physical paradoxes, the pipeline executed a chronological data forensics loop, calculating missing lead-time intervals and using that clean vector to programmatically shift corrupted reception dates into realistic operational alignments:
+                    </p>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre># Step A: Perform data forensics to restore missing lead time intervals
+calculated_deltas = (df['Transaction_Date'] - df['Order_Date']).dt.days
+df['Lead_Time_Days'] = df['Lead_Time_Days'].fillna(calculated_deltas).astype('int64')
+
+# Step B: Reconstruct and synchronize paradoxical warehouse reception dates
+invalid_dates_mask = df['Reception_Date'] < df['Order_Date']
+corrected_receptions = df.loc[invalid_dates_mask, 'Order_Date'] + pd.to_timedelta(df.loc[invalid_dates_mask, 'Lead_Time_Days'], unit='D')
+df.loc[invalid_dates_mask, 'Reception_Date'] = corrected_receptions</pre>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">2.4 Financial Attribute Unmasking with Regular Expressions</h3>
+                    <p>
+                        Fiscal columns like gross revenue and supplier costs were locked as text strings due to embedded currency signs ($) and formatting commas. This completely blocked any aggregation matrix. Vectorized string replacement using regular expressions (`r'[\$,]'`) stripped out these masks before casting the fields into double-precision floating-point metrics (`float64`), exporting a pristine database named <code class="bg-slate-100 px-1 py-0.5 rounded text-xs font-mono text-slate-800">aeroglide_logistics_clean.csv</code>.
+                    </p>
+                </div>
+            </article>
+
+            <!-- SECTION 3: DIMENSIONAL MODELING & DAX INFRASTRUCTURE -->
+            <article id="architecture" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase 03: Relational Architecture</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">3. Dimensional Modeling & Star Schema Implementation</h2>
+                </div>
+                <p>
+                    To achieve maximum query performance, optimize column-store index compression, and eliminate data redundancy, the curated transactional dataset was normalized into a rigid <strong class="text-slate-950 font-extrabold">Star Schema architecture</strong>. Descriptive attributes were decoupled into dedicated dimension tables, while core quantitative metrics were retained within a centralized fact table, ensuring sub-second dashboard responsiveness.
+                </p>
+
+                <!-- SCHEMA FIGURE INTERFACE -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/star_schema_aeroglide.png" alt="AeroGlide Distribution Group Star Schema Relational Model" class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure 2.1: Relational Architecture Layer / Star Schema Optimized Model View</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.1 Entity Relationship Configuration & Integrity Constraints</h3>
+                    <p>
+                        The single-direction filter propagation paths eliminate logical ambiguity across complex time-intelligence calculations and hierarchical geospatial rollups. Referential integrity was maintained through strict enforcement of single-filter relational keys:
+                    </p>
+                    <ul class="space-y-1 list-disc pl-5">
+                        <li><strong class="text-slate-950 font-bold">Product Dimension:</strong> One-to-many (1:*) relationship between <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">dim_products[SKU]</code> and <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">fact_logistics[SKU]</code>, verifying exactly 48 unique active records.</li>
+                        <li><strong class="text-slate-950 font-bold">Geographic Dimension:</strong> One-to-many (1:*) relationship between <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">dim_geography[State]</code> and <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">fact_logistics[State]</code>, governing exactly 25 unique operational nodes.</li>
+                        <li><strong class="text-slate-950 font-bold">Temporal Dimension:</strong> Anchored by a one-to-many (1:*) link between <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">Dim_Calendar[DateKey]</code> and <code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">fact_logistics[Transaction_Date]</code>. Active physical relationships to Order_Date and Reception_Date were deliberately omitted to prevent context ambiguity, addressed instead via advanced DAX time-intelligence expressions.</li>
+                    </ul>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">3.2 Business Intelligence Layer: Semantic DAX Metrics Dictionary</h3>
+                    <p>
+                        The core value proposition of ADG’s telemetry platform lies in a sophisticated semantic layer of custom-engineered DAX calculations. All measures are centralized within a dedicated, non-physical table (<code class="text-xs font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">_Measures_Logistics</code>) to enforce governance, simplify downstream report authoring, and ensure a single source of truth.
+                    </p>
+                    <p>
+                        The following section displays the two primary algorithmic weapons developed to expose operational blind spots and reclaim working capital:
+                    </p>
+                </div>
+
+                <!-- DAX HERO BOX 1 -->
+                <div class="bg-slate-50 border border-slate-100 p-4 rounded-xl space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Advanced Inventory Optimization</span>
+                    <h4 class="font-black text-slate-950 text-xs sm:text-sm">Measure 10: Safety Stock Volume Formula</h4>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre>Safety Stock Volume = 
+    // Establishes protection inventory using standard logistics statistical formulas
+    // ServiceFactor value represents a ninety-five percent service level standard
+    VAR ServiceFactor = 1.65
+    VAR AvgLT = [Average Lead Time Days]
+    VAR StdDevDemand = [Standard Deviation of Daily Sales]
+    RETURN
+        ROUND(ServiceFactor * StdDevDemand * SQRT(AvgLT), 0)</pre>
+                    </div>
+                </div>
+
+                <!-- DAX HERO BOX 2 -->
+                <div class="bg-slate-50 border border-slate-100 p-4 rounded-xl space-y-2">
+                    <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Risk Alerts & Capital Diagnostics</span>
+                    <h4 class="font-black text-slate-950 text-xs sm:text-sm">Measure 16: Inactive Capital Volume (Overstock) Formula</h4>
+                    <div class="bg-slate-950 text-slate-200 p-4 rounded-xl font-mono text-xs overflow-x-auto shadow-inner">
+<pre>Inactive Capital Volume = 
+    // Quantifies capital frozen in surplus stock exceeding safety and reorder targets
+    SUMX(
+        Fact_Logistics,
+        VAR SafetyThreshold = [Reorder Point Volume]
+        VAR CurrentStockValue = fact_logistics[Current_Stock]
+        RETURN
+            IF(
+                CurrentStockValue > SafetyThreshold,
+                (CurrentStockValue - SafetyThreshold) * fact_logistics[Unit_Price],
+                0
+            )
+    )</pre>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h4 class="font-black text-slate-950">3.3 Complementary Semantic Matrix Registry</h4>
+                    <p>
+                        The remaining metrics are managed programmatically under strict governance definitions to align operations with macro-level corporate goals:
+                    </p>
+                    <ul class="space-y-2 list-none pl-0">
+                        <li class="border-l-2 border-slate-200 pl-3"><strong class="text-slate-950 font-bold block">Net Profit Margin:</strong> Evaluates institutional profitability as a percentage of overall corporate income using a safe <code class="text-xs font-mono bg-slate-100 px-0.5 rounded text-slate-800">DIVIDE</code> function.</li>
+                        <li class="border-l-2 border-slate-200 pl-3"><strong class="text-slate-950 font-bold block">Reorder Point Volume (ROP):</strong> Determines the precise inventory threshold that must trigger a replenishment order to avoid stock depletion.</li>
+                        <li class="border-l-2 border-slate-200 pl-3"><strong class="text-slate-950 font-bold block">Inventory Turnover Ratio:</strong> Measures capital velocity by evaluating how frequently warehouse stock is replaced against core procurement investments.</li>
+                        <li class="border-l-2 border-slate-200 pl-3"><strong class="text-slate-950 font-bold block">Stockout Rate Percentage:</strong> Evaluates default warehouse vulnerability by determining what percentage of entire network operations results in zero-stock failure states.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- SECTION 4: ANALYTICAL INSIGHTS -->
+            <article id="insights" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase 04: Macro Diagnostics</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">4. Analytical Insights & Executive Findings</h2>
+                </div>
+                <p>
+                    By converting transactional facts into structured metrics, these findings isolate the exact friction points where supply chain execution anomalies intersect with corporate working capital stagnation across active territories.
+                </p>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.1 Global Distribution & Geographic Performance Telemetry</h3>
+                    <p>
+                        The central data view establishes that the organization operates under a state of high commercial health regarding market traction, showing an institutional revenue base of <strong class="text-slate-950 font-bold">$1,484.6M in Total Gross Revenue</strong>, driven by <strong class="text-slate-950 font-bold">3,626,727 Total Units Sold</strong>, with an exceptional <strong class="text-slate-950 font-bold">Net Profit Margin of 88.9%</strong>. However, telemetry flags this margin with a "High Volatility" marker, indicating that although individual sales are highly lucrative, the operating profit remains vulnerable to localized inventory carrying costs.
+                    </p>
+                </div>
+
+                <!-- STATIC DASHBOARD IMAGE BLOCK ONE -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/aeroglide_distribution.png" alt="AeroGlide Distribution Management Interface View" class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure 1.2: Geographic Performance Analysis Layer / Operational Volume Metrics</p>
+                </div>
+
+                <!-- MINIMALIST HIGH COSTURE CATEGORY TABLE -->
+                <div class="overflow-x-auto border border-slate-100 rounded-xl my-4">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-100 text-[10px] font-black uppercase tracking-wider text-slate-400">
+                                <th class="p-3">Product Category</th>
+                                <th class="p-3">Total Units Sold</th>
+                                <th class="p-3">Commercial Volume Share (%)</th>
+                                <th class="p-3">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 font-medium text-slate-700">
+                            <tr>
+                                <td class="p-3 font-bold text-slate-950">Climate Control</td>
+                                <td class="p-3">1,086.39K</td>
+                                <td class="p-3">29.90%</td>
+                                <td class="p-3 text-red-600 font-bold">Volume Leader</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-slate-950">Consumer Electronics</td>
+                                <td class="p-3">848.58K</td>
+                                <td class="p-3">23.40%</td>
+                                <td class="p-3 text-slate-400">Balanced</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-slate-950">Domestic Appliances</td>
+                                <td class="p-3">847.21K</td>
+                                <td class="p-3">23.40%</td>
+                                <td class="p-3 text-slate-400">Balanced</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-slate-950">Smart Home Automation</td>
+                                <td class="p-3">844.54K</td>
+                                <td class="p-3">23.30%</td>
+                                <td class="p-3 text-slate-400">Balanced</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.2 Capital Over-Allocation & Inventory Saturation Audit</h3>
+                    <p>
+                        While the distribution layer confirms high commercial traction, the inventory audit layer exposes severe structural breakdowns within purchasing protocols. The network logs a catastrophic accumulation of <strong class="text-slate-950 font-bold">50,628,108 units in stock</strong>, pushing warehouses to an alarming <strong class="text-rose-600 font-bold">84% saturation rate</strong>. Concurrently, the network registers a <strong class="text-rose-600 font-bold">6.8% Stockout Rate (High Risk)</strong>. This represents an operational paradox: ADG is heavily overstocked across the board, yet suffers from localized zero-inventory failure events due to defective product allocation.
+                    </p>
+                </div>
+
+                <!-- STATIC DASHBOARD IMAGE BLOCK TWO -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/aeroglide_inventory.png" alt="AeroGlide Inventory Saturation Audit System View" class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure 1.3: Capital Over-Allocation Interface Profile / Historical Storage Saturation</p>
+                </div>
+
+                <p>
+                    The custom asset monitor exposes exactly how this surplus inventory translates into a massive capital trap. The system programmatically isolates a total financial volume tied to stagnant overstock, breaking it down across macro business units with absolute precision to protect corporate integrity: <strong class="text-slate-950 font-bold">Domestic Appliances traps $10.92M (52.4% Allocation Share)</strong>, representing the absolute epicenter of capital paralysis. This is followed by Consumer Electronics at <strong class="text-slate-950 font-bold">$4.62M (22.1%)</strong>, Climate Control at <strong class="text-slate-950 font-bold">$3.42M (16.6%)</strong>, and Smart Home Automation at <strong class="text-slate-950 font-bold">$1.82M (8.9%)</strong>.
+                </p>
+
+                <!-- CALLOUT CRITICAL OUTLIER CONTAINER -->
+                <div class="bg-red-50/20 border border-red-100/50 p-4 rounded-xl text-xs sm:text-sm text-slate-600 space-y-2">
+                    <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-black bg-red-600 text-white rounded uppercase tracking-wider">Granular Bottleneck Isolate</span>
+                    <h4 class="font-black text-slate-950">Geographic Edge-Case: California Warehouse Exception</h4>
+                    <p>By deploying the Overstock Risk Level metric, the platform successfully bridges macro-allocation risks with granular reality. In California (CA), the current inventory level for <strong class="text-slate-950 font-bold">SKU CC-AIR-01</strong> has been inflated to <strong class="text-rose-600 font-bold">158,361 units</strong>, exceeding the mathematically sound Reorder Point (ROP) of 455 units by an astonishing factor of <strong class="text-rose-600 font-extrabold">348x</strong>, designating California as a critical logistics bottleneck.</p>
+                </div>
+
+                <!-- STATIC DASHBOARD IMAGE BLOCK THREE -->
+                <div class="figure-container p-2 rounded-xl bg-slate-50 my-4">
+                    <img src="img/aeroglide_trends.png" alt="AeroGlide Temporal Trends and Velocity View" class="w-full h-auto rounded-lg">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider text-center mt-2">Figure 1.4: Supply Chain Trends Layer / Temporal Velocity and Regional Outliers</p>
+                </div>
+
+                <div class="space-y-2 pt-2">
+                    <h3 class="font-black text-slate-950">4.3 Supply Chain Velocity & Temporal Trends</h3>
+                    <p>
+                        The trend telemetry confirms that ADG’s capital velocity is deeply compromised. The group operates at a sluggish <strong class="text-slate-950 font-bold">Inventory Turnover Ratio of 3.3x</strong>, meaning stock is replaced roughly once every four months. However, the true depth of the purchasing crisis is exposed by the Days of Supply (DOS) metric, which stands at an average of <strong class="text-rose-600 font-bold">5,095 Days</strong>. This extreme value proves that under current daily depletion rates, ADG is carrying enough unliquidated warehouse stock to sustain operations for <strong class="text-slate-950 font-bold">13.9 years</strong> without issuing a single new procurement order.
+                    </p>
+                    <p>
+                        Crucially, the combo analysis establishes that supplier performance is exceptionally stable, maintaining a flat line of <strong class="text-slate-950 font-bold">13.7 Average Lead Time Days</strong> throughout the year, completely insulated from seasonal fluctuations. This stable delivery pattern proves that the overstock crisis is not caused by unpredictable supplier delays, but rather by internal procurement planning failures.
+                    </p>
+                </div>
+            </article>
+
+            <!-- SECTION 5: PRESCRIPTIVE PROTOCOLS -->
+            <article id="protocols" class="scroll-mt-24 space-y-4 border-t border-slate-100 pt-8">
+                <div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-slate-100 text-slate-600 rounded border border-slate-200 uppercase tracking-wider mb-2">Phase 05: Executive Action</span>
+                    <h2 class="text-xl font-black text-slate-950 tracking-tight">5. Strategic Recommendations & Project Conclusions</h2>
+                </div>
+                <p>
+                    By converting the critical insights surfaced across the multi-regional distribution, inventory, and trend telemetry layers into actionable operational protocols, AeroGlide Distribution Group can systematically dismantle its liquidity bottlenecks and drastically accelerate its global working capital velocity.
+                </p>
+
+                <div class="space-y-3 list-none pl-0 pt-2">
+                    <div class="border-l-2 border-[#EF314C] pl-3">
+                        <strong class="text-slate-950 font-bold block">Targeted Inventory Liquidation & Asset Recovery:</strong> Mitigating the massive accumulation of $20.8M in Inactive Capital requires immediate, surgically targeted asset recovery strategies. Initiate immediate localized B2B clearance liquidations and wholesale redistribution channels specifically for SKU CC-AIR-01 within the California fulfillment hub to systematically bleed down the 158,361 units toward the mathematically verified ROP target of 455 units. Establish strategic bundling configurations to move the $10.92M trapped in stagnant Domestic Appliances.
+                    </div>
+                    <div class="border-l-2 border-[#EF314C] pl-3">
+                        <strong class="text-slate-950 font-bold block">Empirical Supplier Contract Renegotiation & JIT Transition:</strong> Leverage the verified 13.7-day flat lead-time baseline to eliminate human-error-prone manual purchasing margins. Supply chain managers must transition to a Just-In-Time (JIT) supply model, renegotiating Minimum Order Quantities (MOQs) with upstream manufacturers, forcing future procurement order volumes to align strictly with the calculated Average Daily Sales metrics.
+                    </div>
+                    <div class="border-l-2 border-[#EF314C] pl-3">
+                        <strong class="text-slate-950 font-bold block">Algorithmic Replenishment & Hard ERP System Locks:</strong> Integrate the dynamic DAX metrics engineered within this BI platform directly into ADG's core Enterprise Resource Planning (ERP) and Warehouse Management Systems (WMS). Enforce a hard system-level programmatic lock within the procurement software that automatically blocks the generation of any new purchase order if current stock sits above its statistically verified <code class="text-xs font-mono bg-slate-100 px-0.5 rounded text-slate-800">[Reorder Point Volume]</code>. This automated constraint will permanently prevent multi-million-dollar over-allocation spikes.
+                    </div>
+                </div>
+            </article>
+
+        </main>
+    </div>
+
+    <!-- CONSOLIDATED HIGH-VOLUME INTERACTIVE EXPERIMENTATION COMPONENT -->
+    <!-- EXTRACTED ENTIRELY OUTSIDE THE GRID LAYOUT FOR GENEROUS 16:9 PROPORTIONAL WIDTH -->
+    <section id="exploration" class="scroll-mt-24 max-w-6xl mx-auto px-6 pb-12 space-y-4 border-t border-slate-100 pt-10">
+        <div>
+            <span class="inline-flex items-center px-2.5 py-0.5 text-xs font-bold bg-red-50 text-[#EF314C] rounded border border-red-100 uppercase tracking-wider mb-2">Production Sandbox System</span>
+            <h2 class="text-xl font-black text-slate-950 tracking-tight">Live Dashboard Exploration</h2>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+            Use the navigation workspace buttons below to alternate natively between the geographic distribution telemetry, inventory asset validation profiles, and supply chain temporal trends at full 100% resolution scaling.
+        </p>
+
+        <!-- Native Multi-View Tab Switch Controller Architecture (Optimized Fixed Large Screen Desktop Height & Proportional Dark Mode Canvas) -->
+        <div class="figure-container rounded-xl overflow-hidden bg-slate-950 mt-4 flex flex-col w-full shadow-lg">
+            <div class="bg-slate-900 border-b border-slate-950 p-3 flex space-x-2 text-xs font-bold">
+                <button id="btn-dist" onclick="switchDashboard('dist')" class="tab-btn px-3 py-1.5 rounded border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-all active">
+                    Distribution Telemetry
+                </button>
+                <button id="btn-inv" onclick="switchDashboard('inv')" class="tab-btn px-3 py-1.5 rounded border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                    Inventory Saturation Audit
+                </button>
+                <button id="btn-trend" onclick="switchDashboard('trend')" class="tab-btn px-3 py-1.5 rounded border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 transition-all">
+                    Supply Chain Trends
+                </button>
+            </div>
+            <div class="w-full h-[650px] relative bg-slate-900">
+                <!-- Clean Unified Framework Core Iframe Container (Fully fixed scale height matching macro widescreen desktop layouts) -->
+                <iframe id="sandbox-frame" title="AeroGlide Interactive Intelligence Suite" class="w-full h-full border-0 absolute top-0 left-0 z-10" src="https://app.powerbi.com/view?r=eyJrIjoiN2Y0MmY1MjUtZWFhOC00Yjg1LTk0MjgtOWJkNWIzMDJiN2Q4IiwidCI6IjgwMGRiNmJmLTc3ZmItNGQ4Ni1hZWFmLTBmNzJlODYwNDBlOCIsImMiOjR9&pageName=644311b53b05c41a737b" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimalist Document Corporate Footer -->
+    <footer class="border-t border-slate-100 bg-slate-50 text-slate-400 text-[11px] py-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+            <p>&copy; 2026 Leonardo Castellanos. Supply Chain Case Study &bull; Technical Architecture Documentation.</p>
+            <p class="font-bold uppercase tracking-widest text-[#EF314C] text-[10px]">Python &amp; Power BI Analytical Engine</p>
+        </div>
+    </footer>
+
+    <!-- INLINE NATIVE SWITCH NAVIGATION LOGIC LAYER -->
+    <script>
+        function switchDashboard(view) {
+            const frame = document.getElementById('sandbox-frame');
+            const btnDist = document.getElementById('btn-dist');
+            const btnInv = document.getElementById('btn-inv');
+            const btnTrend = document.getElementById('btn-trend');
+            
+            // Clean global hash configurations derived from Microsoft Business Tenant settings
+            const baseUrl = "https://app.powerbi.com/view?r=eyJrIjoiN2Y0MmY1MjUtZWFhOC00Yjg1LTk0MjgtOWJkNWIzMDJiN2Q4IiwidCI6IjgwMGRiNmJmLTc3ZmItNGQ4Ni1hZWFmLTBmNzJlODYwNDBlOCIsImMiOjR9";
+            const distPage = "644311b53b05c41a737b";
+            const invPage = "e465d507ad06f36fd54f";
+            const trendPage = "836ee13b4dba6bce23dc";
+
+            // Reset classes
+            btnDist.classList.remove('active');
+            btnInv.classList.remove('active');
+            btnTrend.classList.remove('active');
+
+            if (view === 'dist') {
+                frame.src = `${baseUrl}&pageName=${distPage}`;
+                btnDist.classList.add('active');
+            } else if (view === 'inv') {
+                frame.src = `${baseUrl}&pageName=${invPage}`;
+                btnInv.classList.add('active');
+            } else if (view === 'trend') {
+                frame.src = `${baseUrl}&pageName=${trendPage}`;
+                btnTrend.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
